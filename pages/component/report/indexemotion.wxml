@@ -1,0 +1,295 @@
+<view class="reportemobox indexemotion">
+    <view class="reportemokuai">
+        <view class="reportemoinfo" style="width:200rpx;">
+            <image alt class="reportemoinfoimg _img" src="{{msg.userInfo.picImg}}" style="width:150rpx;height:150rpx;border-radius:100rpx;"></image>
+        </view>
+        <view class="reportemoinfops" style="width:440rpx;">
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;font-weight:bold;margin-top:30rpx;">{{'姓名：'+msg.userInfo.userName}}</view>
+            <view class="reportemoinfopsli" style="width:100%;color:#385C8B;font-size:20rpx;white-space:break-spaces;">本报告所展示的分析结果仅代表即时数据，并非专业非接触检测数据报告，仅供参考。</view>
+        </view>
+    </view>
+    <view class="reportemokuai" style="padding:0;">
+        <view class="reportemozong">
+            <view class="reportemozongtop">
+                <image alt class="zongtopimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion1.png"></image>
+                <view class="reportemozongtopps">
+                    <view class="zongnum">
+                        <text style="float:left;">{{msgps.psychoMoodAnalyzeData.psychoGrade}}</text>
+                        <text style="margin-top:10rpx;width:300rpx;padding-left:30rpx;font-size:44rpx;">
+                            <text style="{{'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoRating}}</text>
+                            <text style="{{'font-size:'+'40rpx'+';'+'margin-left:'+'8rpx'+';'+'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoScore==1?'优秀':msgps.psychoMoodAnalyzeData.psychoScore==2?'良好':msgps.psychoMoodAnalyzeData.psychoScore==3?'一般':msgps.psychoMoodAnalyzeData.psychoScore==4?'较差':''}}</text>
+                        </text>
+                    </view>
+                    <view class="zongname">
+                        <view>心理综合评分</view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv">
+                <view class="reportemofenxiname" style="font-size:20rpx;white-space:wrap;height:auto;">注：综合评定结果由负面情绪、正面情绪、心理能力综合计算。</view>
+                <view class="baicont" style="font-size:28rpx;margin-bottom:20rpx;">
+                    <view class="baicontli">
+                        <view class="title">负面情绪</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade?msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+';'}}">{{''+(negativeMoodDataList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?negativeMoodDataList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+''}}</view>
+                    </view>
+                    <view class="baicontli">
+                        <view class="title">正面情绪</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade?msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+';'}}">{{''+(positiveMoodDataList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?positiveMoodDataList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+''}}</view>
+                    </view>
+                    <view class="baicontli">
+                        <view class="title">心理能力</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade?msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+';'}}">{{''+(moodAbilityDataList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?moodAbilityDataList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+''}}</view>
+                    </view>
+                </view>
+                <view style="float:left;margin-bottom:20rpx;width:100%;">
+                    <view style="float:left;">
+                        <image alt="分项指标" class="_img" src="https://diag.wuzhengai.com/appimage/indexemotionfenxian.png" style="width:64rpx;height:64rpx;"></image>
+                    </view>
+                    <view class="reportemofenxiname">分项指标</view>
+                </view>
+                <view style="float:left;margin-bottom:20rpx;width:100%;">
+                    <view class="baizbli">
+                        <view class="title">负面情绪</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodAbilityList}}" wx:key="index">{{item.name?item.name:''}}</view>
+                        </scroll-view>
+                    </view>
+                    <view class="baizbli">
+                        <view class="title">正面情绪</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodAbilityList}}" wx:key="index">{{item.name?item.name:''}}</view>
+                        </scroll-view>
+                    </view>
+                    <view class="baizbli">
+                        <view class="title">心理能力</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodAbilityList}}" wx:key="index">{{item.name?item.name:''}}</view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv" style="float:left;overflow:hidden;" wx:if="{{msgps.hrvHeartBrainData!=null}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">心率变异性趋势图</view>
+                    </view>
+                    <view style="height:200rpx;width:100%;float:left;background:#EEF8FF;">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhehrv1}}" opts="{{optszhehrv1}}" type="area" vueId="37278c9d-1"></qiun-data-charts>
+                    </view>
+                </view>
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">心率变异性解读</view>
+                    </view>
+                    <view class="reportemozongps">
+                        <view class="rppgreportdocsuncontpsinps" wx:if="{{msgps.hrvHeartBrainData.sdnnTrendInfo}}">
+                            <rich-text nodes="{{msgps.hrvHeartBrainData.sdnnTrendInfo}}"></rich-text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="pingjia">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">心理评价</view>
+                </view>
+                <view class="reportemozongps">
+                    <view wx:if="{{msgps.analyzeResultCarryColor}}">
+                        <view wx:for="{{msgps.analyzeResultCarryColor}}" wx:for-item="val" wx:key="index">
+                            <label class="_span" style="{{'color:'+(item.color==1?'#74C045':item.color==2?'#1890FF':item.color==3?'#F4D127':item.color==4?'#F4A627':item.color==5?'#EF5655':'#385C8B')+';'+'font-weight:'+(item.color==0?'400':'bold')+';'}}" wx:for="{{val.colorTextList}}" wx:for-index="index1">{{''+item.text+''}}</label>
+                        </view>
+                    </view>
+                    <view wx:if="{{!msgps.analyzeResultCarryColor}}">
+                        <view wx:for="{{msgps.analyzeResult}}" wx:for-item="val" wx:key="index">
+                            <rich-text nodes="{{val}}"></rich-text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reportemokuai">
+            <view class="reportemozongxinlv" style="float:left;overflow:hidden;margin-left:0rpx;margin-bottom:40rpx;" wx:if="{{msgps.hrvHeartBrainData!=null}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">自主神经活动状态</view>
+                    </view>
+                    <view style="height:200rpx;width:100%;float:left;background:#EEF8FF;">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhehrv}}" opts="{{optszhehrv}}" type="area" vueId="37278c9d-2"></qiun-data-charts>
+                    </view>
+                </view>
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">自主神经活动说明</view>
+                    </view>
+                    <view class="reportemozongps">
+                        <view class="rppgreportdocsuncontpsinps" wx:if="{{!$root.g0}}">
+                            <rich-text nodes="{{msgps.hrvHeartBrainData.hrvTrendInfo}}"></rich-text>
+                        </view>
+                        <view class="rppgreportdocsuncontpsinps" wx:if="{{$root.g1}}">
+                            <view wx:for="{{$root.l0}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemofenxi">
+                <view class="reportemofenxileft"></view>
+                <view class="reportemofenxiname">情绪评价-负面情绪</view>
+            </view>
+            <view class="reportemobanyuan">
+                <view class="reportemobanyuanps">
+                    <view class="psname">您的负面情绪评分为：</view>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade+'分'}}</view>
+                    <view class="pstype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore?['较低','较低','偏高','较高','过高'][msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'较低'}}</view>
+                </view>
+                <view class="reportemobanyuanimgps">
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion61.png" wx:if="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==1}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion62.png" wx:if="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==2}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion63.png" wx:if="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==3}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion64.png" wx:if="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==4}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion65.png" wx:if="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==5}}"></image>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade+'分'}}</view>
+                    <view class="psnum1">取值范围0-100分，得分越低越好</view>
+                </view>
+            </view>
+            <view style="width:100%;float:left;" wx:for="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodAbilityList}}" wx:for-item="val" wx:key="index">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">{{val.name}}</view>
+                </view>
+                <view class="reportemoyali">
+                    <view class="biaoge2_22">
+                        <view class="biaogetop2_22">
+                            <view class="biaogetopname2_22">
+                                <view class="biaogetopname12_22">{{val.name+'指数'}}</view>
+                                <view class="biaogetopname22_22" style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'+'font-size:'+'32rpx'+';'}}">{{''+val.index}}</view>
+                                <view class="biaogetopname32_22" style="{{'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='焦虑'}}">{{''+(val.score==1?'较低':val.score==2?'轻度焦虑':val.score==3?'中度焦虑':val.score==4?'重度焦虑':'较低')}}</text>
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='抑郁'}}">{{val.score==1?'较低':val.score==2?'轻度抑郁':val.score==3?'中度抑郁':val.score==4?'重度抑郁':'较低'}}</text>
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='压力'}}">{{val.score==1?'较低':val.score==2?'轻度压力':val.score==3?'中度压力':val.score==4?'重度压力':'较低'}}</text>
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='失眠'}}">{{val.score==1?'睡眠充足':val.score==2?'轻度失眠':val.score==3?'中度失眠':val.score==4?'重度失眠':'睡眠充足'}}</text>
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='疲劳'}}">{{val.score==1?'精力充沛':val.score==2?'轻度疲劳':val.score==3?'中度疲劳':val.score==4?'重度疲劳':'精力充沛'}}</text>
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}" wx:if="{{val.name=='易怒'}}">{{val.score==1?'较低':val.score==2?'轻度易怒':val.score==3?'中度易怒':val.score==4?'重度易怒':'较低'}}</text>
+                                </view>
+                            </view>
+                            <view class="biaogetopnameps2_22">
+                                <view>{{'解读：'+(val.info?val.info:val.unscramble)}}</view>
+                            </view>
+                        </view>
+                        <view class="biaogelist2_22">
+                            <view class="biaogeli2_22" wx:for="{{val.riskFactorAnalysisDataList}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">
+                                <view class="biaogeliname2_22">{{''+val1.funcationName+''}}</view>
+                                <view class="biaogelinameps2_22">
+                                    <view style="width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{''+val1.result+(val1.unit?val1.unit:'')}}</view>
+                                    <view style="{{'color:'+(val1.dataType==1?'#ef6c6b':val1.dataType==2?'#74c045':val1.dataType==3?'#ef6c6b':val1.dataType==4?'#385C8B':'#385C8B')+';'}}">{{''+(val1.dataType==1?'偏低':val1.dataType==2?'正常':val1.dataType==3?'偏高':'临界值')+''}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="pingjia" style="margin-left:0;margin-top:30rpx;">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">情绪评价-疾病风险</view>
+                </view>
+                <view class="reportemozongps" style="background:none;height:260rpx;">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartData}}" opts="{{opts}}" type="line" vueId="37278c9d-3"></qiun-data-charts>
+                </view>
+            </view>
+        </view>
+        <view class="reportemokuai">
+            <view class="reportemofenxi">
+                <view class="reportemofenxileft"></view>
+                <view class="reportemofenxiname">情绪评价-正面情绪</view>
+            </view>
+            <view class="reportemobanyuan">
+                <view class="reportemobanyuanps">
+                    <view class="psname">您的正面情绪评分为：</view>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade+'分'}}</view>
+                    <view class="pstype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1?'充足':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2?'较高':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==3?'较低':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==4?'过低':'严重异常'}}</view>
+                </view>
+                <view class="reportemobanyuanimgps">
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion61.png" wx:if="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion62.png" wx:if="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion63.png" wx:if="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==3}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion64.png" wx:if="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==4}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion65.png" wx:if="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==5}}"></image>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade+'分'}}</view>
+                    <view class="psnum1">取值范围0-100分，得分越高越好</view>
+                </view>
+            </view>
+            <view style="width:100%;float:left;" wx:for="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodAbilityList}}" wx:for-item="val" wx:key="index">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">{{val.name}}</view>
+                </view>
+                <view class="reportemoyali">
+                    <view class="biaoge2_22">
+                        <view class="biaogetop2_22">
+                            <view class="biaogetopname2_22">
+                                <view class="biaogetopname12_22">{{val.name+'指数'}}</view>
+                                <view class="biaogetopname22_22" style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'+'font-size:'+'32rpx'+';'}}">{{''+val.index}}</view>
+                                <view class="biaogetopname32_22" style="{{'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}">{{val.score==1?'较高':val.score==2?'偏低':val.score==3?'较低':val.score==4?'过低':'较高'}}</text>
+                                </view>
+                            </view>
+                            <view class="biaogetopnameps2_22">
+                                <view>{{'解读：'+(val.info?val.info:val.unscramble)}}</view>
+                            </view>
+                        </view>
+                        <view class="biaogelist2_22">
+                            <view class="biaogeli2_22" wx:for="{{val.riskFactorAnalysisDataList}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">
+                                <view class="biaogeliname2_22">{{''+val1.funcationName+''}}</view>
+                                <view class="biaogelinameps2_22">
+                                    <view style="width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{''+val1.result+(val1.unit?val1.unit:'')}}</view>
+                                    <view style="{{'color:'+(val1.dataType==1?'#ef6c6b':val1.dataType==2?'#74c045':val1.dataType==3?'#ef6c6b':val1.dataType==4?'#385C8B':'#385C8B')+';'}}">{{''+(val1.dataType==1?'偏低':val1.dataType==2?'正常':val1.dataType==3?'偏高':'临界值')+''}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reportemokuai">
+            <view class="reportemofenxi">
+                <view class="reportemofenxileft"></view>
+                <view class="reportemofenxiname">心理能力评价</view>
+            </view>
+            <view class="reportemobanyuan">
+                <view class="reportemobanyuanps">
+                    <view class="psname">您的心理能力评分为：</view>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade+'分'}}</view>
+                    <view class="pstype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1?'优秀':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2?'良好':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'一般':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'较差':'优秀')+''}}</view>
+                </view>
+                <view class="reportemobanyuanimgps">
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion61.png" wx:if="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion62.png" wx:if="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion63.png" wx:if="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion64.png" wx:if="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4}}"></image>
+                    <image alt class="reportemobanyuanimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion65.png" wx:if="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==5}}"></image>
+                    <view class="psnum" style="{{'color:'+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade+'分'}}</view>
+                    <view class="psnum1">取值范围0-100分，得分越高越好</view>
+                </view>
+            </view>
+            <view class="pingjia" style="margin-left:0;">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">心理能力解读</view>
+                </view>
+                <view class="reportemozongps">
+                    <view wx:for="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodAbilityList}}" wx:for-item="val" wx:key="index">{{''+val.name+'：'+val.info+''}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

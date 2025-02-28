@@ -1,0 +1,341 @@
+<view class="reportbox">
+    <view class="fanhui"></view>
+    <view style="width:100%;float:left;">
+        <view class="reportkuai" style="padding:20rpx;">
+            <view class="jiujingma">
+                <image alt class="jiujingmaimg _img" src="https://diag.wuzhengai.com/image/ma1.png" wx:if="{{msg.userDriveInfo.healthScore==1}}"></image>
+                <image alt class="jiujingmaimg _img" src="https://diag.wuzhengai.com/image/ma2.png" wx:if="{{msg.userDriveInfo.healthScore==2}}"></image>
+                <image alt class="jiujingmaimg _img" src="https://diag.wuzhengai.com/image/ma3.png" wx:if="{{msg.userDriveInfo.healthScore==3}}"></image>
+                <view class="jiujingmacont">
+                    <view class="jiujingmacontli" style="width:100%;">
+                        <image alt class="reportkuaiimg _img" src="{{msg.userInfo.picImg}}"></image>
+                    </view>
+                    <view class="jiujingmacontli" style="width:30%;">
+                        <view class="name">姓名</view>
+                        <view class="nameps" style="padding-right:16rpx;box-sizing:border-box;">{{msg.userInfo.userName}}</view>
+                    </view>
+                    <view class="jiujingmacontli" style="width:23%;">
+                        <view class="name">年龄</view>
+                        <view class="nameps">{{msg.userInfo.age+'岁'}}</view>
+                    </view>
+                    <view class="jiujingmacontli" style="width:23%;">
+                        <view class="name">身高</view>
+                        <view class="nameps">{{msg.userInfo.userHeight+'cm'}}</view>
+                    </view>
+                    <view class="jiujingmacontli" style="width:24%;">
+                        <view class="name">体重</view>
+                        <view class="nameps">{{msg.userInfo.userWeight+'KG'}}</view>
+                    </view>
+                    <view class="jiujingmacontlima" style="margin-top:50rpx;">
+                        <image alt class="jiujingmacontlimg _img" src="{{msg.userDriveInfo.qrcodeImgUrl}}"></image>
+                        <view class="name">公交安全</view>
+                        <view class="name">驾驶健康状态</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reportkuai">
+            <view class="reportfenxi">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">检测结果</view>
+            </view>
+            <view class="reportkuailist">
+                <view style="float:left;" wx:for="{{$root.l0}}" wx:for-item="val" wx:key="index">
+                    <view class="{{[val[$orig].cl?'reportkuaili bag':'reportkuaili']}}" wx:if="{{val[$orig].funcationType!=0}}">
+                        <image alt class="reportkuailiimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="{{[val[$orig].cl?'reportkuailiname bag1':'reportkuailiname']}}">
+                            <text style="{{'font-size:'+(val[$orig].funcationType=='hrv'||val[$orig].funcationType=='10010'||val[$orig].funcationType=='10018'?'21rpx':'24rpx')+';'}}">{{val[$orig].funcationName}}</text>
+                        </view>
+                        <view wx:if="{{val[$orig].funcationType=='hrv'}}">
+                            <image alt class="_img" src="{{val.m0}}" style="width:120rpx;height:50rpx;margin-top:20rpx;" wx:if="{{!val[$orig].cl}}"></image>
+                            <image alt class="_img" src="{{val.m1}}" style="width:120rpx;height:50rpx;margin-top:20rpx;" wx:if="{{val[$orig].cl}}"></image>
+                        </view>
+                        <block wx:else>
+                            <view wx:if="{{val[$orig].funcationType=='heartBrain'}}">
+                                <view class="{{[val[$orig].cl?'reportkuailinum bag1':'reportkuailinum']}}" style="{{'color:'+(val[$orig].dataType==1?'#EF5655':val[$orig].dataType==2?'#74C045':'#EF5655')+';'}}">{{(val[$orig].abnormalCount?val[$orig].abnormalCount:'--')+'项'}}</view>
+                                <view class="{{[val[$orig].cl?'reportkuailinumps bag1':'reportkuailinumps']}}">{{(val[$orig].normalCount?val[$orig].normalCount:'--')+'项'}}</view>
+                            </view>
+                            <view wx:else>
+                                <view class="{{[val[$orig].cl?'reportkuailinum bag1':'reportkuailinum']}}" style="{{'color:'+(val[$orig].dataType==1?'#EF5655':val[$orig].dataType==2?'#74C045':'#EF5655')+';'}}">{{val[$orig].value}}</view>
+                                <view class="{{[val[$orig].cl?'reportkuailinumps bag1':'reportkuailinumps']}}">{{val[$orig].unit}}</view>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="{{[val[$orig].cl?'reportkuaili bag':'reportkuaili']}}" style="{{'width:'+(val.g1%4==3?'312rpx':val.g2%4==2?'474rpx':val.g3%4==1?'152rpx':'152rpx')+';'}}" wx:if="{{val.g0}}">
+                        <image alt class="reportkuailiimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="{{[val[$orig].cl?'reportkuailiname bag1':'reportkuailiname']}}">{{''+val[$orig].funcationName}}</view>
+                        <view>
+                            <view class="{{[val[$orig].cl?'reportkuailinum bag1':'reportkuailinum']}}" style="{{'color:'+(val[$orig].dataType==1?'#EF5655':val[$orig].dataType==2?'#74C045':'#EF5655')+';'}}">
+                                <text style="width:80rpx;display:inline-block;">{{(val[$orig].abnormalCount?val[$orig].abnormalCount:'--')+'项'}}</text>
+                                <text style="{{'color:'+(val[$orig].cl?'#fff':'#385C8B')+';'+'font-weight:'+'400'+';'}}">异常</text>
+                            </view>
+                            <view class="{{[val[$orig].cl?'reportkuailinumps bag1':'reportkuailinumps']}}">
+                                <text style="width:80rpx;display:inline-block;">{{(val[$orig].normalCount?val[$orig].normalCount:'--')+'项'}}</text>
+                                <text style="{{'color:'+(val[$orig].cl?'#fff':'#385C8B')+';'+'font-weight:'+'400'+';'}}">正常</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="{{[val[$orig].cl?'reportkuaizonghe bag':'reportkuaizonghe']}}" wx:if="{{val.g4}}">
+                        <image alt class="reportkuaizongheimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="reportkuaizonghename">{{val[$orig].funcationName}}</view>
+                        <view class="reportkuaizonghenameps" style="color:#EF5655;margin-right:10rpx;">{{val[$orig].abnormalCount+'项'}}</view>
+                        <view class="reportkuaizonghename">异常</view>
+                        <view class="reportkuaizonghename" style="margin-right:0;">
+                            <text style="font-weight:bold;margin-right:10rpx;">{{val[$orig].normalCount+'项'}}</text>正常</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reportkuai">
+            <view class="reportfenxi">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">分析结果</view>
+                <image alt class="reportfenxiimg _img" src="{{$root.m2}}" wx:if="{{msgps.funcationType!='heartBrain'&&msgps.funcationType!='hrv'}}"></image>
+                <view wx:if="{{msgps.funcationType=='heartBrain'||msgps.funcationType=='hrv'}}">
+                    <image alt class="reportfenxiimgps _img" src="{{$root.m3}}" wx:if="{{msgps.dataType==1}}"></image>
+                    <image alt class="reportfenxiimgps _img" src="{{$root.m4}}" wx:if="{{msgps.dataType==2}}"></image>
+                    <image alt class="reportfenxiimgps _img" src="{{$root.m5}}" wx:if="{{msgps.dataType==3}}"></image>
+                    <image alt class="reportfenxiimgps _img" src="{{$root.m6}}" wx:if="{{msgps.dataType==4}}"></image>
+                    <image alt class="reportfenxiimgps _img" src="{{$root.m7}}" wx:if="{{msgps.dataType==5}}"></image>
+                </view>
+            </view>
+            <view class="reportyalilist" style="margin-bottom:20rpx;" wx:if="{{msgps.funcationType=='heartBrain'||msgps.funcationType=='hrv'}}">
+                <view class="reportyalilistli1">
+                    <image alt class="reportyalilistimg _img" src="{{$root.m8}}" wx:if="{{msgps.dataType==1}}"></image>低</view>
+                <view class="reportyalilistli2">
+                    <image alt class="reportyalilistimg _img" src="{{$root.m9}}" wx:if="{{msgps.dataType==2}}"></image>偏低</view>
+                <view class="reportyalilistli3">
+                    <image alt class="reportyalilistimg _img" src="{{$root.m10}}" wx:if="{{msgps.dataType==3}}"></image>适中</view>
+                <view class="reportyalilistli4">
+                    <image alt class="reportyalilistimg _img" src="{{$root.m11}}" wx:if="{{msgps.dataType==4}}"></image>良</view>
+                <view class="reportyalilistli5">
+                    <image alt class="reportyalilistimg _img" src="{{$root.m12}}" wx:if="{{msgps.dataType==5}}"></image>优</view>
+            </view>
+            <view class="reportfenxitxt">
+                <view wx:for="{{msgps.analyzeResult}}" wx:for-item="val" wx:key="index">{{val}}</view>
+            </view>
+        </view>
+        <view class="reportkuai">
+            <view class="reportfenxi">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">核心指标</view>
+            </view>
+            <view style="font-size:18rpx;font-weight:400;margin-left:10rpx;color:#385C8B;float:left;">(数值绿色为正常，黄色为临界值，红色为异常)单次检测仅供参考，如有偏差建议进行多次检测</view>
+            <view class="reportfenxiyinzi">
+                <view class="reportfenxiyinzitop">
+                    <view class="reportfenxiyinzitop1">测量指标</view>
+                    <view class="reportfenxiyinzitop2">测量结果</view>
+                    <view class="reportfenxiyinzitop3">单位</view>
+                    <view class="reportfenxiyinzitop4">结果</view>
+                </view>
+                <view class="reportfenxiyinzili" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                    <view class="reportfenxiyinzili1">{{val.funcationName}}</view>
+                    <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':val.dataType==3?'#EF5655':'#FFB51C')+';'}}">{{val.result}}</view>
+                    <view class="reportfenxiyinzili3">{{val.unit}}</view>
+                    <view class="reportfenxiyinzili4">
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType!='10017'&&val.funcationType!='10008'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'}}">偏低</view>
+                            <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                        </view>
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10017'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                        </view>
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10008'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{(val.dataType==4?'临界值':'较低')+'<'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{$root.g5}}">
+                <view wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                    <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.num>=0&&val.dataType!=4&&index==0}}">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">核心指标异常解读</view>
+                    </view>
+                </view>
+                <view class="reportfenxitxt" wx:if="{{msgps.num>=0}}">
+                    <view wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                        <view wx:if="{{val.dataType!=2&&val.dataType!=4}}">{{val.funcationName+'：'+val.info}}</view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{val.g6}}" wx:for="{{$root.l1}}" wx:for-item="val" wx:key="index">
+                <view class="reportfenxi" style="margin-top:20rpx;">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">临界值指标异常解读</view>
+                </view>
+            </view>
+            <view class="reportfenxitxt" wx:if="{{$root.g7}}">
+                <view wx:if="{{val.dataType==4}}" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">{{val.funcationName+'：'+val.info}}</view>
+            </view>
+            <view class="reportfenxi" style="margin-top:10rpx;" wx:if="{{$root.g8>0}}">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">以下指标仅供参考</view>
+            </view>
+            <view style="font-size:18rpx;font-weight:400;margin-left:10rpx;color:#385C8B;float:left;" wx:if="{{$root.g9>0}}">(数值绿色为正常，黄色为临界值，红色为异常)单次检测仅供参考，如有偏差建议进行多次检测)</view>
+            <view class="reportfenxiyinzi" wx:if="{{$root.g10>0}}">
+                <view class="reportfenxiyinzitop">
+                    <view class="reportfenxiyinzitop1">测量指标</view>
+                    <view class="reportfenxiyinzitop2">测量结果</view>
+                    <view class="reportfenxiyinzitop3">单位</view>
+                    <view class="reportfenxiyinzitop4">结果</view>
+                </view>
+                <view class="reportfenxiyinzili" wx:for="{{msgps.riskFactorAnalysisDataList1}}" wx:for-item="val" wx:key="index">
+                    <view class="reportfenxiyinzili1">{{val.funcationName}}</view>
+                    <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':val.dataType==3?'#EF5655':'#FFB51C')+';'}}">{{val.result}}</view>
+                    <view class="reportfenxiyinzili3">{{val.unit}}</view>
+                    <view class="reportfenxiyinzili4">
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType!='10017'&&val.funcationType!='10008'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'}}">偏低</view>
+                            <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                        </view>
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10017'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                        </view>
+                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10008'}}">
+                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{(val.dataType==4?'临界值':'较低')+'<'}}</view>
+                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.num1>=0}}">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">以下指标解读仅供参考</view>
+            </view>
+            <view class="reportfenxitxt" wx:if="{{msgps.num1>=0}}">
+                <view>根据您本次的检测数据，提示您<text wx:if="{{val.dataType!=2}}" wx:for="{{msgps.riskFactorAnalysisDataList1}}" wx:for-item="val" wx:key="index">{{val.funcationName}}<text wx:if="{{msgps.num1!=index}}">、</text>
+                    </text>异常，分别为：</view>
+                <view wx:if="{{val.dataType!=2}}" wx:for="{{msgps.riskFactorAnalysisDataList1}}" wx:for-item="val" wx:key="index">{{val.funcationName+'：'+val.info}}</view>
+            </view>
+        </view>
+        <view class="reportkuai" wx:if="{{false}}">
+            <view class="reportfenxi">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">疾病风险分析</view>
+            </view>
+            <view class="reportzhishutop">
+                <scroll-view class="navscroll" scrollX="{{true}}">
+                    <view bindtap="__e" class="reportzhishutopli" data-event-opts="{{[ [ 'tap',[ [ 'typeinps',['$0'],[ [ ['msgps.diseaseRiskPotentialList','',index] ] ] ] ] ] ]}}" wx:for="{{msgps.diseaseRiskPotentialList}}" wx:for-item="val" wx:key="index">
+                        <view class="{{[val.cl?'reportzhishutopliname':'reportzhishutoplinameps']}}">{{''+val.diseaseName+''}}<view class="reportzhishutoplidi" wx:if="{{val.cl}}"></view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="reportzhishu">
+                <view class="reportfenxi">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">风险趋势预测分析</view>
+                </view>
+                <view style="width:300rpx;float:left;font-size:20rpx;font-family:PingFang-SC-Regular, PingFang-SC;font-weight:400;color:#385C8B;line-height:37rpx;margin-top:10rpx;padding-left:40rpx;box-sizing:border-box;">疾病发展趋势(单位:月)</view>
+                <view style="width:300rpx;float:right;font-size:20rpx;font-family:PingFang-SC-Regular, PingFang-SC;font-weight:400;color:#385C8B;line-height:37rpx;margin-top:10rpx;padding-left:10rpx;box-sizing:border-box;">疾病风险随时间的变化(单位:%)</view>
+                <view class="reportzhishutu1">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartData1}}" id="charts1" ontouch="{{true}}" opts="{{opts}}" tooltipFormat="tooltipTemp1" type="line" vueId="484e4f44-1"></qiun-data-charts>
+                </view>
+                <view class="reportzhishutu2">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartData2}}" id="charts2" ontouch="{{true}}" opts="{{opts}}" tooltipFormat="tooltipTemp1" type="column" vueId="484e4f44-2"></qiun-data-charts>
+                </view>
+                <view class="reportzhishutxt">风险解读</view>
+                <view class="reportfenxitxt">{{''+dise.diseaseDesc+''}}</view>
+            </view>
+            <view class="reportfenxi" style="margin-top:40rpx;">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">医学分析</view>
+            </view>
+            <view class="reportfenxiyinzi" style="text-align:left;background:none;">
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1" style="height:128rpx;padding:10rpx 20rpx;box-sizing:border-box;">症状</view>
+                    <view class="reportfenxiyinzili2" style="width:450rpx;height:128rpx;background-color:#fff;overflow-y:auto;text-align:left;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{''+dise.symptom}}</view>
+                </view>
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1" style="height:128rpx;padding:10rpx 20rpx;box-sizing:border-box;">好发人群</view>
+                    <view class="reportfenxiyinzili2" style="width:450rpx;height:128rpx;background-color:#fff;overflow-y:auto;text-align:left;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{dise.easyGet+''}}</view>
+                </view>
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1">并发症</view>
+                    <view class="reportfenxiyinzili2" style="width:450rpx;background-color:#fff;">{{dise.acompany}}</view>
+                </view>
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1" style="height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">传播方式</view>
+                    <view class="reportfenxiyinzili2" style="width:150rpx;background-color:#fff;overflow-y:auto;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{dise.getWay}}</view>
+                    <view class="reportfenxiyinzili3" style="width:150rpx;background-color:#6C9ADB;color:#fff;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">治愈率</view>
+                    <view class="reportfenxiyinzili3" style="width:150rpx;background-color:#fff;overflow-y:auto;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{dise.curedProb}}</view>
+                </view>
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1" style="height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">治疗周期</view>
+                    <view class="reportfenxiyinzili2" style="width:150rpx;background-color:#fff;overflow-y:auto;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{dise.cureLasttime}}</view>
+                    <view class="reportfenxiyinzili3" style="width:150rpx;background-color:#6C9ADB;color:#fff;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">发病率</view>
+                    <view class="reportfenxiyinzili3" style="width:150rpx;background-color:#fff;overflow-y:auto;height:80rpx;padding:10rpx 20rpx;box-sizing:border-box;line-height:30rpx;">{{dise.getProb}}</view>
+                </view>
+                <view class="reportfenxiyinzili">
+                    <view class="reportfenxiyinzili1" style="height:180rpx;padding:10rpx 20rpx;box-sizing:border-box;">预防措施</view>
+                    <view class="reportfenxiyinzili2" style="width:450rpx;height:180rpx;background-color:#fff;overflow-y:auto;text-align:left;padding:10rpx 20rpx;box-sizing:border-box;">
+                        <view wx:for="{{$root.l2}}" wx:for-index="index3" wx:for-item="val" wx:key="index3">{{val}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reportkuai" wx:if="{{false}}">
+            <view style="width:100%;float:left;" wx:for="{{$root.l3}}" wx:for-item="val" wx:key="index">
+                <view class="reportfenxi" style="margin-top:30rpx;">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">{{val[$orig].name}}</view>
+                </view>
+                <view class="reportyali">
+                    <view class="reportyalilist">
+                        <view class="reportyalilistli1">
+                            <image alt class="reportyalilistimg _img" src="{{val.m13}}" wx:if="{{val[$orig].score==1}}"></image>低</view>
+                        <view class="reportyalilistli2">
+                            <image alt class="reportyalilistimg _img" src="{{val.m14}}" wx:if="{{val[$orig].score==2}}"></image>偏低</view>
+                        <view class="reportyalilistli3">
+                            <image alt class="reportyalilistimg _img" src="{{val.m15}}" wx:if="{{val[$orig].score==3}}"></image>适中</view>
+                        <view class="reportyalilistli4">
+                            <image alt class="reportyalilistimg _img" src="{{val.m16}}" wx:if="{{val[$orig].score==4}}"></image>良</view>
+                        <view class="reportyalilistli5">
+                            <image alt class="reportyalilistimg _img" src="{{val.m17}}" wx:if="{{val[$orig].score==5}}"></image>优</view>
+                    </view>
+                    <view class="reportfenxitxt" style="margin-top:16rpx;">{{val[$orig].unscramble+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view style="width:100%;float:left;" wx:if="{{false}}">
+            <view class="reportkuai" wx:if="{{msgps.funcationType=='heartBrain'||msgps.funcationType=='hrv'}}">
+                <view class="reportfenxi">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">指标分析项</view>
+                </view>
+                <view style="width:100%;float:left;margin-top:20rpx;" wx:for="{{$root.l4}}" wx:for-item="val" wx:key="index">
+                    <view style="width:40%;float:left;margin-bottom:16rpx;font-size:30rpx;font-family:PingFangSC-Medium, PingFang SC;font-weight:500;">
+                        <text style="color:#1890FF;margin-right:20rpx;">{{val[$orig].funcationName}}</text>
+                        <text style="{{'color:'+(val[$orig].dataType==1?'#74C045':val[$orig].dataType==2?'#FFB51C':'#EF5655')+';'}}">{{val[$orig].result}}</text>
+                    </view>
+                    <view class="reportfenxiyinzili4s" style="width:60%;float:left;margin-bottom:16rpx;">
+                        <view class="reportfenxiyinzili4sli1">
+                            <image alt class="reportfenxiyinzili4simg _img" src="{{val.m18}}" wx:if="{{val[$orig].dataType==1}}"></image>低</view>
+                        <view class="reportfenxiyinzili4sli2">
+                            <image alt class="reportfenxiyinzili4simg _img" src="{{val.m19}}" wx:if="{{val[$orig].dataType==2}}"></image>中</view>
+                        <view class="reportfenxiyinzili4sli3">
+                            <image alt class="reportfenxiyinzili4simg _img" src="{{val.m20}}" wx:if="{{val[$orig].dataType==3}}"></image>高</view>
+                    </view>
+                    <view class="reportfenxitxt">{{''+val[$orig].info+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view style="width:100%;float:left;">
+            <view class="reportkuai">
+                <view class="reportfenxi">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">近期异常占比统计</view>
+                </view>
+                <view style="width:100%;float:left;height:320rpx;">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatajj}}" id="charts2" ontouch="{{true}}" opts="{{optsjj}}" tooltipFormat="tooltipTemp1" type="column" vueId="484e4f44-3"></qiun-data-charts>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

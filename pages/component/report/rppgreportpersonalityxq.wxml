@@ -1,0 +1,135 @@
+<view class="personalityxq">
+    <view class="personalityxqcont">
+        <view class="personalityxqtop">
+            <image alt class="personalityxqtopimg _img" src="{{userInfo.faceImg}}"></image>
+            <view class="personalityxqtopname">{{userInfo.userName}}</view>
+            <view class="personalityxqtoplist">
+                <view class="personalityxqtopli" style="width:180rpx;">
+                    <view class="personalityxqtopliname shenglue">{{'姓名：'+userInfo.userName}}</view>
+                    <view class="personalityxqtopliname">{{'年龄：'+userInfo.age+'岁'}}</view>
+                </view>
+                <view class="personalityxqtopli" style="width:180rpx;">
+                    <view class="personalityxqtopliname">{{'性别：'+(userInfo.sex==1?'男':'女')}}</view>
+                    <view class="personalityxqtopliname">{{'身高：'+userInfo.userHeight+'cm'}}</view>
+                </view>
+                <view class="personalityxqtopli" style="width:280rpx;">
+                    <view class="personalityxqtopliname">{{'体重：'+userInfo.userWeight+'KG'}}</view>
+                    <view class="personalityxqtopliname">{{'出生日期：'+userInfo.birthday}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="personalityxqtopge">
+            <view class="personalityxqtopgecont">
+                <image alt class="personalityxqtopgecontimg _img" src="https://diag.wuzhengai.com/appimage/yiyuheadimg.png"></image>
+                <view class="personalityxqtopgecontname">您的人格类型</view>
+                <view class="personalityxqtopgecontnameps">{{msg.personalityMbti+' ('+msg.personalityType+')'}}</view>
+                <view class="personalityxqtopgeconttype">
+                    <view style="display:inline-block;margin-right:10rpx;" wx:for="{{msg.mbtiDescription}}" wx:for-item="val">{{val.value}}</view>
+                </view>
+            </view>
+            <view class="personalityxqkuangtop" style="background:none;margin-top:30rpx;">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">您的灵魂颜色</view>
+            </view>
+            <view class="personalityxqtopgeps">
+                <view wx:for="{{msg.soulColor}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+            <image alt class="personalityxqtopgepsimg _img" src="https://diag.wuzhengai.com/appimage/personality3.png"></image>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">综合描述</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.comprehensiveDescription}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">性格特点</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.personalityTraits}}" wx:for-item="val">
+                    <view>{{val.name}}</view>
+                    <view>{{val.value}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">优点</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.advantage}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+            <view class="personalityxqkuangtop" style="margin-top:30rpx;">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">缺点</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.disadvantage}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+            <image alt class="personalityxqtopgepsimg _img" src="https://diag.wuzhengai.com/appimage/personality4.png"></image>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">恋爱表现</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.lovePerformance}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+            <image alt class="personalityxqtopgepsimg _img" src="https://diag.wuzhengai.com/appimage/personality5.png"></image>
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">最佳配偶</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.bestSpouse}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">工作</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.work}}" wx:for-item="val">
+                    <view>{{val.name}}</view>
+                    <view>{{val.value}}</view>
+                </view>
+            </view>
+            <image alt class="personalityxqtopgepsimg _img" src="https://diag.wuzhengai.com/appimage/personality6.png"></image>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">代表人物</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.representativeFigure}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">大多是什么星座</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.starSign}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+        </view>
+        <view class="personalityxqkuang">
+            <view class="personalityxqkuangtop">
+                <view class="personalityxqkuangtopspan"></view>
+                <view class="personalityxqkuangtopname">长相特点</view>
+            </view>
+            <view class="personalityxqgongzuo">
+                <view wx:for="{{msg.looks}}" wx:for-item="val">{{val.value}}</view>
+            </view>
+        </view>
+    </view>
+</view>

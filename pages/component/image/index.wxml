@@ -1,0 +1,12 @@
+<view class="firingcontent" style="background:#E3EBF3;">
+    <view class="imagezhong">
+        <view class="imagezhongimg">
+            <image alt class="imagezhongimg1 _img" src="{{$root.m0}}"></image>
+            <view class="imagezhongimgtext">{{num+'%'}}</view>
+        </view>
+        <view class="imagezhongtext">{{text}}</view>
+    </view>
+    <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'newbaogao',['$event'] ] ] ] ]}}" disabled="{{analyzeStatus!=0}}" style="background:#0E77FF;border-radius:10px;width:690rpx;margin-left:30rpx;" type="primary">查看最新报告</button>
+    <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'lishibaogao',['$event'] ] ] ] ]}}" disabled="{{analyzeStatus!=0}}" style="background:#0E77FF;border-radius:10px;width:690rpx;margin-left:30rpx;margin-top:20rpx;" type="primary">查看历史报告</button>
+    <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'topage',['$event'] ] ] ] ]}}" style="background:#11417E;border-radius:10px;margin-top:20rpx;width:690rpx;margin-left:30rpx;" type="primary">首页</button>
+</view>

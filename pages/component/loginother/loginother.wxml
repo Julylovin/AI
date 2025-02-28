@@ -1,0 +1,27 @@
+<view class="logincontent" style="background-color:#E3EBF3;">
+    <view class="logincont" style="width:690rpx;margin-left:30rpx;margin-top:30rpx;border-radius:60rpx;">
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'onSubmit',['$event'] ] ] ] ]}}">
+            <view>
+                <view class="uni-form-item uni-column">
+                    <view class="title">
+                        <text class="uni-form-item__title logincontname">手机号</text>
+                    </view>
+                    <view class="uni-input-wrapper">
+                        <input bindinput="__e" class="uni-input" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','phone','$event',[] ],['form'] ] ] ] ]}}" name="phone" placeholder="请输入您的手机号" value="{{form.phone}}"></input>
+                    </view>
+                </view>
+                <view class="uni-form-item uni-column">
+                    <view class="title">
+                        <text class="uni-form-item__title logincontname">验证码</text>
+                    </view>
+                    <view class="uni-input-wrapper">
+                        <input class="uni-input" name="phoneCode" placeholder="请输入验证码"></input>
+                        <view bindtap="__e" class="logincontwangji" data-event-opts="{{[ [ 'tap',[ [ 'codeyanzheng',['$event'] ] ] ] ]}}" wx:if="{{!timer}}">获取验证码</view>
+                        <view class="logincontwangji" wx:if="{{timer}}">{{'重新获取（'+num+'s）'}}</view>
+                    </view>
+                </view>
+            </view>
+            <button class="loginsubmit" formType="submit" style="width:570rpx;background:#0E77FF;">确定</button>
+        </form>
+    </view>
+</view>

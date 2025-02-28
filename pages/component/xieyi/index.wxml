@@ -1,0 +1,6 @@
+<view>
+    <view class="xieyicont">
+        <view class="xieyiname">{{''+msg.title+''}}</view>
+        <view class="xieyili" wx:for="{{msg.contentList}}" wx:for-item="val" wx:key="index">{{''+val+''}}</view>
+    </view>
+</view>

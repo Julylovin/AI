@@ -1,0 +1,20 @@
+<view class="firingcontent">
+    <view class="firingtop" style="margin-top:100rpx;">{{weChatMiniProgram==1?'为了您的数据安全':'快来查看报告吧'}}</view>
+    <view class="firingtop" wx:if="{{weChatMiniProgram==1}}">请先自拍进行验证</view>
+    <view class="firingimg">
+        <image alt class="firingimg1 _img" src="{{$root.m0}}"></image>
+        <image alt class="firingimg2 _img" src="{{$root.m1}}"></image>
+    </view>
+    <view class="firingbottom" wx:if="{{weChatMiniProgram==1}}">注意：请您面向摄像头进行自拍，面部不要有遮挡</view>
+    <view bindtap="__e" class="btnsaoma" data-event-opts="{{[ [ 'tap',[ [ 'paizhao',['$event'] ] ] ] ]}}">{{weChatMiniProgram==0?'马上体验':'去拍照识别分析'}}</view>
+    <uni-popup bind:__l="__l" class="vue-ref" data-ref="popup" vueId="e16ce736-1" vueSlots="{{['default']}}">
+        <view class="guanbiclass">
+            <view class="guanbiclasstop">请确认您拍摄的照片</view>
+            <image alt class="_img" src="{{img}}" style="width:400rpx;height:400rpx;margin:0 115rpx;float:left;border-radius:14rpx;margin-bottom:60rpx;"></image>
+            <view style="text-align:center;margin-top:30rpx;">
+                <button bindtap="__e" class="mini-btn" data-event-opts="{{[ [ 'tap',[ ['close'] ] ] ]}}" size="mini" style="background-color:#0E77FF;color:#fff;" type="default">重拍</button>
+                <button bindtap="__e" class="mini-btn" data-event-opts="{{[ [ 'tap',[ ['submit'] ] ] ]}}" size="mini" style="margin-left:20rpx;background-color:#0E77FF;" type="primary">确认下一步</button>
+            </view>
+        </view>
+    </uni-popup>
+</view>

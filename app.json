@@ -1,0 +1,66 @@
+{
+  "permission": {
+    "scope.userLocation": {
+      "desc": "通过定位获取您当前所在地店铺信息"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground",
+    "chooseAddress"
+  ],
+  "__usePrivacyCheck__": true,
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#1890FF",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/newtabBar/information/index",
+        "text": "功能",
+        "iconPath": "static/image/function.png",
+        "selectedIconPath": "static/image/functionHL.png"
+      },
+      {
+        "pagePath": "pages/newtabBar/my/index",
+        "text": "我的",
+        "iconPath": "static/image/my.png",
+        "selectedIconPath": "static/image/myHL.png"
+      }
+    ]
+  },
+  "window": {
+    "pageOrientation": "portrait",
+    "navigationBarTitleText": "康养",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff",
+    "backgroundColorTop": "#fff",
+    "backgroundColorBottom": "#fff"
+  },
+  "pages": [
+    "pages/component/my/index",
+    "pages/component/firing/index",
+    "pages/component/firing/indexps",
+    "pages/component/loginother/loginother",
+    "pages/component/image/index",
+    "pages/component/report/index",
+    "pages/component/report/indexjj",
+    "pages/component/report/indexemotion",
+    "pages/component/report/rppgreportpersonality",
+    "pages/component/report/rppgreportpersonalityxq",
+    "pages/component/report/rppgreportmdd",
+    "pages/component/report/rppgreporthrvmedicine",
+    "pages/component/report/rppgreportsom",
+    "pages/component/myreport/index",
+    "pages/component/rppglist/index",
+    "pages/component/reporthistory/index",
+    "pages/component/register/index",
+    "pages/newtabBar/my/index",
+    "pages/newtabBar/information/index",
+    "pages/component/xieyi/index",
+    "pages/component/report/reportlinda"
+  ]
+}

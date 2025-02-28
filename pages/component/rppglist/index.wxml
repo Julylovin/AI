@@ -1,0 +1,28 @@
+<view>
+    <view class="rppglist">
+        <view bindtap="__e" class="rppgli" data-event-opts="{{[ [ 'tap',[ [ 'baogao',['$0'],[ [ ['getUserHistoryReportList','id',val.id] ] ] ] ] ] ]}}" wx:for="{{getUserHistoryReportList}}" wx:for-item="val" wx:key="id">
+            <view class="rppglitop">
+                <image alt class="rppglitopimg _img" src="{{$root.m0}}"></image>
+                <view class="time">{{val.addTime}}</view>
+                <image alt class="rppglitopimgps _img" src="{{$root.m1}}"></image>
+                <view class="txt">{{val.analyzeStatus==0?'点击查看报告':val.analyzeStatus==-1?'正在分析中':'分析失败'}}</view>
+            </view>
+            <view class="rppglicont">
+                <view class="name">血压</view>
+                <view class="num" style="{{'color:'+(val.dataTypeBloodPressure==1?'#EF5655':val.dataTypeBloodPressure==2?'#74C045':'#EF5655')+';'}}">{{val.bloodPressure}}</view>
+            </view>
+            <view class="rppglicont">
+                <view class="name">心率</view>
+                <view class="num" style="{{'color:'+(val.dataTypeHeartRate==1?'#EF5655':val.dataTypeHeartRate==2?'#74C045':'#EF5655')+';'}}">{{val.heartRate}}</view>
+            </view>
+            <view class="rppglicont">
+                <view class="name">血氧</view>
+                <view class="num" style="{{'color:'+(val.dataTypeBloodOxygen==1?'#EF5655':val.dataTypeBloodOxygen==2?'#74C045':'#EF5655')+';'}}">{{val.bloodOxygen}}</view>
+            </view>
+            <view class="rppglicont" style="margin-right:0;">
+                <view class="name">呼吸率</view>
+                <view class="num" style="{{'color:'+(val.dataTypeBreatheRate==1?'#EF5655':val.dataTypeBreatheRate==2?'#74C045':'#EF5655')+';'}}">{{val.breatheRate}}</view>
+            </view>
+        </view>
+    </view>
+</view>

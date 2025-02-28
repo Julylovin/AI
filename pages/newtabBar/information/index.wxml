@@ -1,0 +1,30 @@
+<view>
+    <view style="background:linear-gradient(360deg, #F9FBFC 0%, #E7F3FF 100%);float:left;">
+        <view class="newsousuo" style="width:670rpx;margin:30rpx 40rpx;">
+            <image alt class="newsousuoimg _img" src="https://diag.wuzhengai.com/image/newsousuo.png"></image>
+            <input bindconfirm="__e" bindinput="__e" class="newsousuoinput" data-event-opts="{{[ [ 'confirm',[ ['handleQuery'] ] ],[ 'input',[ [ '__set_model',[ '$0','title','$event',[] ],['form'] ] ] ] ]}}" placeholder="请输入关键词进行搜索" placeholderStyle="color:#ccc" type="text" value="{{form.title}}"></input>
+        </view>
+        <view class="informationcont">
+            <view class="informationtop">
+                <view bindtap="__e" class="{{['informationtopli',val.cl?'informationtopli':'informationtoplips']}}" data-event-opts="{{[ [ 'tap',[ [ 'typein',[index] ] ] ] ]}}" wx:for="{{msgtype}}" wx:for-item="val" wx:key="index">
+                    <uni-badge absolute="rightTop" bind:__l="__l" class="uni-badge-left-margin" size="small" text="{{type}}" vueId="{{'65b3a75e-1-'+index}}" vueSlots="{{['default']}}">
+                        <view class="{{[val.cl?'informationtopname':'informationtopnameps']}}">{{''+val.dictLabel+''}}</view>
+                    </uni-badge>
+                </view>
+            </view>
+            <view class="informationsoslist">
+                <view class="informationcont" wx:if="{{$root.g0==0}}">
+                    <view class="shouyewu" style="margin-top:24vh;">
+                        <image alt class="shouyewuimg _img" src="https://diag.wuzhengai.com/image/yewuwu.png"></image>
+                        <view class="shouyewuname">暂无数据</view>
+                    </view>
+                </view>
+                <view bindtap="__e" class="informationsoslistli" data-event-opts="{{[ [ 'tap',[ [ 'xiangqing',['$0'],[ [ ['msg','',index] ] ] ] ] ] ]}}" wx:for="{{msg}}" wx:for-item="val" wx:key="index">
+                    <image alt class="informationimgps _img" src="{{val.thumbnail}}"></image>
+                    <view class="informationtitle">{{val.title}}</view>
+                    <view class="informationjianjie">{{val.synopsis}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

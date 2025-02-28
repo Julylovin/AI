@@ -1,0 +1,154 @@
+<view class="myreportbox">
+    <view class="myreportkuai" style="background:none;margin-bottom:0;">
+        <image alt class="myreportkuaiimg _img" src="{{msg.picImg}}"></image>
+        <view style="float:left;width:200rpx;">
+            <view class="myreportkuainame" style="width:200rpx;">{{msg.userName}}</view>
+            <view class="myreportkuainameps" style="width:200rpx;">{{msg.age+'岁 '+(msg.userHeight?msg.userHeight:'')+'cm'}}</view>
+        </view>
+        <view bindtap="__e" class="myreportbnagding1" data-event-opts="{{[ [ 'tap',[ [ 'zuo',['$event'] ] ] ] ]}}">修改信息<image alt class="_img" src="{{$root.m0}}" style="width:14rpx;height:24rpx;float:right;margin-top:18rpx;margin-left:20rpx;"></image>
+        </view>
+    </view>
+    <view class="myreportkuai">
+        <view class="myreportcishu">
+            <view class="myreportcishuli">
+                <image alt class="myreportcishuliimg _img" src="{{$root.m1}}"></image>
+                <view class="myreportcishuliname">今日</view>
+                <view class="myreportcishulinum">{{msg.reportCount1+'次'}}</view>
+            </view>
+            <view class="myreportcishulinameps">排名</view>
+            <view class="myreportcishulinumps">{{msg.reportRank1}}</view>
+        </view>
+        <view class="myreportcishu">
+            <view class="myreportcishuli">
+                <image alt class="myreportcishuliimg _img" src="{{$root.m2}}"></image>
+                <view class="myreportcishuliname">本周</view>
+                <view class="myreportcishulinum">{{msg.reportCount2+'次'}}</view>
+            </view>
+            <view class="myreportcishulinameps">排名</view>
+            <view class="myreportcishulinumps">{{msg.reportRank2}}</view>
+        </view>
+        <view class="myreportcishu">
+            <view class="myreportcishuli">
+                <image alt class="myreportcishuliimg _img" src="{{$root.m3}}"></image>
+                <view class="myreportcishuliname">本月</view>
+                <view class="myreportcishulinum">{{msg.reportCount3+'次'}}</view>
+            </view>
+            <view class="myreportcishulinameps">排名</view>
+            <view class="myreportcishulinumps">{{msg.reportRank3}}</view>
+        </view>
+        <view class="myreportcishu" style="margin-right:0;">
+            <view class="myreportcishuli">
+                <image alt class="myreportcishuliimg _img" src="{{$root.m4}}"></image>
+                <view class="myreportcishuliname">总计</view>
+                <view class="myreportcishulinum">{{msg.reportCount4+'次'}}</view>
+            </view>
+            <view class="myreportcishulinameps">排名</view>
+            <view class="myreportcishulinumps">{{msg.reportRank4}}</view>
+        </view>
+        <view class="myreportdu">
+            <image alt class="myreportduimg _img" src="{{$root.m5}}"></image>
+            <view class="myreportduname">{{''+(msg.analyzeInfo?msg.analyzeInfo:'')+''}}</view>
+        </view>
+    </view>
+    <view class="myreportkuai">
+        <view class="mynamekuai">最新报告<text style="font-size:24rpx;font-family:PingFangSC-Regular, PingFang SC;font-weight:400;color:#385C8B;float:right;height:50rpx;line-height:50rpx;">{{msg.createTime?msg.createTime:''}}</text>
+        </view>
+        <view class="myreportkuailist">
+            <view style="float:left;" wx:for="{{msg.itemList}}" wx:for-item="val" wx:key="index">
+                <view class="myreportkuaili" wx:if="{{val.funcationType!=0}}">
+                    <image alt class="myreportkuailiimg _img" src="{{val.funcationWebIcon}}"></image>
+                    <view class="myreportkuailiname">
+                        <text style="{{'font-size:'+(val.funcationType=='hrv'||val.funcationType=='10010'||val.funcationType=='10018'?'21rpx':'24rpx')+';'}}">{{val.funcationName}}</text>
+                    </view>
+                    <view wx:if="{{val.funcationType=='hrv'}}">
+                        <view style="{{'color:'+(val.hrvHeartBrainData.hrvHeartBrainScore==1?'#EF5655':val.hrvHeartBrainData.hrvHeartBrainScore==2?'#FFB51C':val.hrvHeartBrainData.hrvHeartBrainScore==3?'#1890FF':'#74C045')+';'}}">{{val.hrvHeartBrainData.hrvHeartBrainScore==1?'过低':val.hrvHeartBrainData.hrvHeartBrainScore==2?'较低':val.hrvHeartBrainData.hrvHeartBrainScore==3?'偏低':val.hrvHeartBrainData.hrvHeartBrainScore==4?'较高':'较高'}}</view>
+                    </view>
+                    <block wx:else>
+                        <view wx:if="{{val.funcationType=='heartBrain'}}">
+                            <text style="{{'color:'+(val.hrvHeartBrainData.heartBrainMoodList[0].score==1?'#74c045':val.hrvHeartBrainData.heartBrainMoodList[0].score==2?'#1890FF':val.hrvHeartBrainData.heartBrainMoodList[0].score==3?'#f4a627':val.hrvHeartBrainData.heartBrainMoodList[0].score==4?'#EF5655':'#74c045')+';'}}">{{''+(val.hrvHeartBrainData.heartBrainMoodList[0].score==1?'无风险':val.hrvHeartBrainData.heartBrainMoodList[0].score==2?'低风险':val.hrvHeartBrainData.heartBrainMoodList[0].score==3?'中风险':val.hrvHeartBrainData.heartBrainMoodList[0].score==4?'高风险':'无风险')+''}}</text>
+                        </view>
+                        <block wx:else>
+                            <view wx:if="{{val.funcationType=='10050'}}">
+                                <view style="{{'color:'+(val.dataType==2?'#74c045':val.dataType==3?'#FFB51C':val.dataType==5?'#EF5655':'#74c045')+';'}}">
+                                    <text>{{''+(val.dataType==2?'正常':val.dataType==3?'偏高':val.dataType==5?'过高':'正常')+''}}</text>
+                                </view>
+                            </view>
+                            <block wx:else>
+                                <view wx:if="{{val.funcationType=='10125'}}">
+                                    <view style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74c045':'#74c045')+';'}}">
+                                        <text>{{val.dataType==1?'较低':val.dataType==2?'较高':'较高'}}</text>
+                                    </view>
+                                </view>
+                                <block wx:else>
+                                    <view wx:if="{{val.funcationType=='10135'}}">
+                                        <view style="{{'color:'+(val.dataType==2?'#74c045':val.dataType==11?'#1890FF':val.dataType==12?'#F4A627':val.dataType==13?'#EF5655':'#74c045')+';'}}">
+                                            <text>{{''+(val.dataType==2?'无贫血':val.dataType==11?'轻度贫血':val.dataType==12?'中度贫血':val.dataType==13?'重度贫血':'无贫血')+''}}</text>
+                                        </view>
+                                    </view>
+                                    <view wx:else>
+                                        <view class="myreportkuailinum" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':'#EF5655')+';'}}">{{''+val.value}}</view>
+                                        <view class="myreportkuailinumps">{{val.unit?val.unit:''}}</view>
+                                    </view>
+                                </block>
+                            </block>
+                        </block>
+                    </block>
+                </view>
+            </view>
+            <view bindtap="__e" class="mykan" data-event-opts="{{[ [ 'tap',[ [ 'kanbaogao',['$event'] ] ] ] ]}}">点击查看报告</view>
+        </view>
+    </view>
+    <view class="myreportkuai">
+        <view class="mynamekuai" style="margin-bottom:20rpx;">跟上次检测的对比变化</view>
+        <view class="myreportduibi">
+            <view class="myreportduibili">
+                <view class="myreportduibilitop1"></view>
+                <view class="myreportduibilitop2"></view>
+                <view class="myreportduibilitop3">上次</view>
+                <view class="myreportduibilitop4">本次</view>
+                <view class="myreportduibilitop5"></view>
+            </view>
+            <view class="myreportduibili" style="background:#EEF8FF;border-bottom:1rpx solid #85C2FC;" wx:for="{{msg.lastReportContrast.itemContrastList}}" wx:for-item="val" wx:key="index">
+                <view class="myreportduibilitopps1">
+                    <image alt class="myreportduibilitopps1img _img" src="{{val.img}}"></image>
+                </view>
+                <view class="myreportduibilitopps2">{{''+val.name+''}}</view>
+                <view class="myreportduibilitopps3">
+                    <view class="zhi">{{''+val.value2+''}}</view>
+                    <view class="dan">{{''+val.unit2+''}}</view>
+                </view>
+                <view class="myreportduibilitopps4">
+                    <view class="zhi">{{''+val.value1+''}}</view>
+                    <view class="dan">{{''+val.unit1+''}}</view>
+                </view>
+                <view class="myreportduibilitopps5">{{''+(val.dataType==1?'偏低':val.dataType==2?'正常':val.dataType==3?'偏高':'--')+''}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="myreportkuai" wx:if="{{$root.g0>0}}">
+        <view class="mynamekuai">安全驾驶健康状态评估统计</view>
+        <view class="myreportyichang" style="background:#EEF8FF;border-radius:10px;padding:20rpx;box-sizing:border-box;margin-top:20rpx;">
+            <qiun-data-charts bind:__l="__l" chartData="{{chartDatajj}}" opts="{{optsjj}}" style="width:60%;float:left;height:260rpx;" type="ring" vueId="5e3e7a98-1"></qiun-data-charts>
+            <view class="cishujiujing">
+                <view class="cishujiujingli" wx:for="{{msg.driveStatisticsList}}" wx:for-item="val" wx:key="index">
+                    <view class="name">{{''+val.name+''}}<text style="{{'color:'+val.color+';'+'margin-left:'+'6rpx'+';'}}">{{val.value+'次'}}</text>
+                    </view>
+                    <view class="span"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="myreportkuai">
+        <view class="mynamekuai">指标异常情况(次)</view>
+        <view class="myreportyichang">
+            <qiun-data-charts bind:__l="__l" chartData="{{chartData}}" id="charts2" ontouch="{{true}}" opts="{{opts}}" tooltipFormat="tooltipTemp1" type="column" vueId="5e3e7a98-2"></qiun-data-charts>
+        </view>
+    </view>
+    <view class="myreportkuai">
+        <view class="mynamekuai">主要指标趋势</view>
+        <view class="myreportyichang" wx:for="{{msg.userHistoryItemList}}" wx:for-item="val" wx:key="index">
+            <view class="mynamekuai" style="font-size:30rpx;font-family:PingFang-SC-Regular, PingFang-SC;font-weight:400;color:#385C8B;margin-top:20rpx;">{{''+val.name+'趋势'}}</view>
+            <tubiao bind:__l="__l" chartDatain="{{val}}" vueId="{{'5e3e7a98-3-'+index}}"></tubiao>
+        </view>
+    </view>
+</view>

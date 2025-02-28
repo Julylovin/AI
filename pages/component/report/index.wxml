@@ -1,0 +1,706 @@
+<view class="reportbox">
+    <view class="fanhui"></view>
+    <view style="width:100%;float:left;" wx:if="{{version!=4&&version!=6}}">
+        <view class="reportkuai" style="position:relative;margin-top:100rpx;">
+            <image alt class="reportkuaiimgnewps _img" src="{{$root.m0}}"></image>
+            <image alt class="reportkuaiimgnew _img" src="{{msg.userInfo.picImg}}"></image>
+            <view class="reportkuainamenew comtxtellipse1" style="width:28%;font-weight:bold;">{{'姓名：'+msg.userInfo.userName}}</view>
+            <view class="reportkuainamenew" style="width:100%;color:#889DB9;font-size:20rpx;">本报告所展示的分析结果仅代表即时数据，并非专业非接触检测数据报告，仅供参考。</view>
+            <view class="reportkuailist">
+                <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'typein',['$0'],[ [ ['msg.itemReportList1','',index] ] ] ] ] ] ]}}" style="float:left;" wx:for="{{$root.l0}}" wx:for-item="val" wx:key="index">
+                    <view class="{{[val[$orig].cl?'reportkuaili bag':'reportkuaili']}}" wx:if="{{val[$orig].funcationType!=0}}">
+                        <image alt class="reportkuailiimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="{{[val[$orig].cl?'reportkuailiname bag1':'reportkuailiname']}}">
+                            <text style="{{'font-size:'+(val[$orig].funcationType=='hrv'||val[$orig].funcationType=='10010'||val[$orig].funcationType=='10018'||val[$orig].funcationType=='skinAnalysis'?'21rpx':'24rpx')+';'}}">{{val[$orig].funcationName}}</text>
+                        </view>
+                        <view wx:if="{{val[$orig].funcationType=='hrv'}}">
+                            <view style="{{'color:'+(val[$orig].hrvHeartBrainData.hrvHeartBrainScore==1?'#EF5655':val[$orig].hrvHeartBrainData.hrvHeartBrainScore==2?'#FFB51C':val[$orig].hrvHeartBrainData.hrvHeartBrainScore==3?'#1890FF':'#74C045')+';'}}">{{val[$orig].hrvHeartBrainData.hrvHeartBrainScore==1?'过低':val[$orig].hrvHeartBrainData.hrvHeartBrainScore==2?'较低':val[$orig].hrvHeartBrainData.hrvHeartBrainScore==3?'偏低':val[$orig].hrvHeartBrainData.hrvHeartBrainScore==4?'较高':'较高'}}</view>
+                        </view>
+                        <block wx:else>
+                            <view wx:if="{{val[$orig].funcationType=='heartBrain'}}">
+                                <text style="{{'color:'+(val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==1?'#74c045':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==2?'#1890FF':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==3?'#f4a627':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==4?'#EF5655':'#74c045')+';'}}">{{''+(val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==1?'无风险':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==2?'低风险':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==3?'中风险':val[$orig].hrvHeartBrainData.heartBrainMoodList[0].score==4?'高风险':'无风险')+''}}</text>
+                            </view>
+                            <block wx:else>
+                                <view wx:if="{{val[$orig].funcationType=='10050'}}">
+                                    <view style="{{'color:'+(val[$orig].dataType==2?'#74c045':val[$orig].dataType==3?'#FFB51C':val[$orig].dataType==5?'#EF5655':'#74c045')+';'}}">
+                                        <text>{{''+(val[$orig].dataType==2?'正常':val[$orig].dataType==3?'偏高':val[$orig].dataType==5?'过高':'正常')+''}}</text>
+                                    </view>
+                                </view>
+                                <block wx:else>
+                                    <view wx:if="{{val[$orig].funcationType=='10125'}}">
+                                        <view style="{{'color:'+(val[$orig].dataType==1?'#EF5655':val[$orig].dataType==2?'#74c045':'#74c045')+';'}}">
+                                            <text>{{val[$orig].dataType==1?'较低':val[$orig].dataType==2?'较高':'较高'}}</text>
+                                        </view>
+                                    </view>
+                                    <block wx:else>
+                                        <view wx:if="{{val[$orig].funcationType=='10135'}}">
+                                            <view style="{{'color:'+(val[$orig].dataType==2?'#74c045':val[$orig].dataType==11?'#1890FF':val[$orig].dataType==12?'#F4A627':val[$orig].dataType==13?'#EF5655':'#74c045')+';'}}">
+                                                <text>{{''+(val[$orig].dataType==2?'无贫血':val[$orig].dataType==11?'轻度贫血':val[$orig].dataType==12?'中度贫血':val[$orig].dataType==13?'重度贫血':'无贫血')+''}}</text>
+                                            </view>
+                                        </view>
+                                        <view wx:else>
+                                            <view class="{{[val[$orig].cl?'reportkuailinum bag1':'reportkuailinum']}}" style="{{'color:'+(val[$orig].dataType==1?'#EF5655':val[$orig].dataType==2?'#74C045':'#EF5655')+';'}}">{{val[$orig].value}}</view>
+                                            <view class="{{[val[$orig].cl?'reportkuailinumps bag1':'reportkuailinumps']}}">{{val[$orig].unit}}</view>
+                                        </view>
+                                    </block>
+                                </block>
+                            </block>
+                        </block>
+                    </view>
+                    <view class="{{[val[$orig].cl?'reportkuaili bag':'reportkuaili']}}" style="{{'width:'+(val.g1%4==3?'312rpx':val.g2%4==2?'474rpx':val.g3%4==1?'152rpx':'152rpx')+';'}}" wx:if="{{val.g0}}">
+                        <image alt class="reportkuailiimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="{{[val[$orig].cl?'reportkuailiname bag1':'reportkuailiname']}}">{{''+val[$orig].funcationName}}</view>
+                        <view>
+                            <view class="{{[val[$orig].cl?'reportkuailinumps bag1':'reportkuailinumps']}}">
+                                <text>{{''+(msg.healthScore==1?'较差':msg.healthScore==2?'一般':msg.healthScore==3?'良好':msg.healthScore==4?'优秀':'优秀')+''}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="{{[val[$orig].cl?'reportkuaizonghe bag':'reportkuaizonghe']}}" wx:if="{{val.g4}}">
+                        <image alt class="reportkuaizongheimg _img" src="{{val[$orig].funcationMobileIcon}}"></image>
+                        <view class="reportkuaizonghename">{{val[$orig].funcationName}}</view>
+                        <view class="reportkuaizonghename" style="margin-right:0;">
+                            <text style="color:#fff;">{{''+(msg.healthScore==1?'较差':msg.healthScore==2?'一般':msg.healthScore==3?'良好':msg.healthScore==4?'优秀':'优秀')+''}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="jiujinxin" wx:if="{{version==5&&msgps.funcationType==0}}">
+            <view wx:if="{{msgps.alcoholDataSummaryVO}}">
+                <image alts class="jiujinxinimg _img" src="https://diag.wuzhengai.com/appimage/jiujinxin2.png" wx:if="{{msgps.alcoholDataSummaryVO.riskType==2}}"></image>
+                <image alts class="jiujinxinimg _img" src="https://diag.wuzhengai.com/appimage/jiujinxin3.png" wx:if="{{msgps.alcoholDataSummaryVO.riskType==3}}"></image>
+                <image alts class="jiujinxinimg _img" src="https://diag.wuzhengai.com/appimage/jiujinxin1.png" wx:if="{{msgps.alcoholDataSummaryVO.riskType==1}}"></image>
+            </view>
+            <view class="jiujinxincont">
+                <view class="jiujinxinkuai">
+                    <view class="jiujinxinkuainame">{{msgps.alcoholDataSummaryVO.mainIndex.funcationName}}</view>
+                    <view class="jiujinxinkuaitype">{{''+msgps.alcoholDataSummaryVO.mainIndex.value+''}}</view>
+                </view>
+                <view class="jiujinxinxiao" wx:if="{{indexin<3}}" wx:for="{{msgps.alcoholDataSummaryVO.itemList}}" wx:for-index="indexin" wx:for-item="valpin" wx:key="indexin">
+                    <view class="jiujinxinxiaoname">{{valpin.funcationName}}</view>
+                    <view class="jiujinxinkuaitype" style="{{'color:'+valpin.backgroundColor+';'}}">{{valpin.value}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="reportkuai" wx:if="{{msgps.funcationType!='skinAnalysis'}}">
+            <view class="reportfenxi">
+                <view class="reportfenxileft"></view>
+                <view class="reportfenxiname">分析结果</view>
+                <image alt class="reportfenxiimg _img" src="{{$root.m1}}" wx:if="{{msgps.funcationType!='heartBrain'&&msgps.funcationType!='hrv'}}"></image>
+            </view>
+            <view class="reportfenxitxt">
+                <view wx:if="{{msgps.analyzeResultCarryColor}}">
+                    <view wx:for="{{msgps.analyzeResultCarryColor}}" wx:for-item="val" wx:key="index">
+                        <label class="_span" style="{{'color:'+(item.color==1?'#74C045':item.color==2?'#1890FF':item.color==3?'#F4A627':item.color==4?'#EF5655':'#385C8B')+';'+'font-weight:'+(item.color==0?'400':'bold')+';'}}" wx:for="{{val.colorTextList}}" wx:for-index="index1" wx:key="index1">{{''+item.text+''}}</label>
+                    </view>
+                </view>
+                <view wx:if="{{!msgps.analyzeResultCarryColor}}">
+                    <view wx:for="{{msgps.analyzeResult}}" wx:for-item="val" wx:key="index">
+                        <rich-text nodes="{{val}}"></rich-text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="width:100%;float:left;" wx:for="{{$root.l10}}" wx:for-index="indexval" wx:for-item="msgval" wx:key="indexval">
+            <view class="reportkuai" style="padding:0;background:none;" wx:if="{{msgval[$orig].moduleType=='skinAnalysis'}}">
+                <view class="pifu">
+                    <view class="pifutop">
+                        <view class="pifutoptop">
+                            <view class="pifutoptopleft">
+                                <view class="pifutoptopleftnum">{{msgps.value+''}}<text style="font-family:PingFangSC, PingFang SC;font-weight:400;font-size:30rpx;color:#385C8B;margin-left:4rpx;">分</text>
+                                </view>
+                                <view class="pifutoptopleftname">皮肤综合评分</view>
+                            </view>
+                            <image alt class="pifutoptoprightimg _img" src="https://diag.wuzhengai.com/appimage/pifu.png"></image>
+                        </view>
+                        <view class="pifutoplist">
+                            <view bindtap="__e" class="{{[valpf.cl?'pifutopli pifutoplitrue':'pifutopli pifutoplifalse']}}" data-event-opts="{{[ [ 'tap',[ [ 'dianxia',[indexpf] ] ] ] ]}}" wx:for="{{msgps.skinAnalyzeVO.analyzeData.brieflyReport.reportScore}}" wx:for-index="indexpf" wx:for-item="valpf" wx:key="indexpf">
+                                <image alt class="pifutopliimg _img" src="{{valpf.icon}}"></image>
+                                <view class="pifutopliname" style="{{'font-size:'+(valpf.name=='皮肤肤色'||valpf.name=='黑眼圈'?'22rpx':valpf.name=='皮肤光滑度'?'20rpx':'32rpx')+';'+'color:'+(valpf.cl?'#fff':'#385C8B')+';'+'margin-top:'+(valpf.name=='皮肤肤色'||valpf.name=='黑眼圈'||valpf.name=='皮肤光滑度'?'0':'4rpx')+';'}}">{{valpf.name}}</view>
+                                <view class="pifutoplinum" style="{{'color:'+(valpf.cl?'#fff':'#0E77FF')+';'}}" wx:if="{{valpf.name=='皮肤肤色'}}">{{valpf.score==1?'透白':valpf.score==2?'白皙':valpf.score==3?'自然':valpf.score==4?'小麦':valpf.score==5?'暗沉':'黝黑'}}</view>
+                                <block wx:else>
+                                    <view class="pifutoplinum" style="{{'color:'+(valpf.cl?'#fff':'#0E77FF')+';'}}" wx:if="{{valpf.name=='皮肤光滑度'}}">{{(valpf.score-1)*25}}<text class="textpifu" style="{{'color:'+(valpf.cl?'#fff':'#385C8B')+';'}}">%</text>
+                                    </view>
+                                    <view class="pifutoplinum" style="{{'color:'+(valpf.cl?'#fff':valpf.score>=66?'#74C045':valpf.score>33?'#3E92E6':'#EF5655')+';'}}" wx:else>{{valpf.score}}<text class="textpifu" style="{{'color:'+(valpf.cl?'#fff':'#385C8B')+';'}}">分</text>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="pifucontlist">
+                        <view class="pifucontli" wx:for="{{reportScore}}" wx:for-index="indexpfin" wx:for-item="valpfin" wx:key="indexpfin">
+                            <view class="pifucontlitop">
+                                <view class="pifucontlitopspan"></view>
+                                <view class="pifucontlitopname">{{valpfin.name}}</view>
+                            </view>
+                            <view class="pifucontlitu">
+                                <view class="pifucontlitutext">
+                                    <view class="pifucontlitutextname">{{'您的'+valpfin.name+'得分：'}}</view>
+                                    <view class="pifucontlitutextnum" style="{{'color:'+(valpfin.score>=66?'#74C045':valpfin.score>33?'#3E92E6':'#EF5655')+';'}}">{{valpfin.score+'分'}}</view>
+                                    <view class="pifucontlitutexttype" style="{{'color:'+(valpfin.score>=66?'#74C045':valpfin.score>33?'#3E92E6':'#EF5655')+';'}}">{{valpfin.score>=66?'无':valpfin.score>33?'轻微':'明显'}}</view>
+                                </view>
+                                <view class="pifucontlituin">
+                                    <image alt class="pifucontlituimg _img" src="https://diag.wuzhengai.com/appimage/pifups1.png" wx:if="{{valpfin.score>=66}}"></image>
+                                    <block wx:else>
+                                        <image alt class="pifucontlituimg _img" src="https://diag.wuzhengai.com/appimage/pifups2.png" wx:if="{{valpfin.score>33}}"></image>
+                                        <image alt class="pifucontlituimg _img" src="https://diag.wuzhengai.com/appimage/pifups3.png" wx:else></image>
+                                    </block>
+                                    <view class="pifucontlituinnum" style="{{'color:'+(valpfin.score>=66?'#74C045':valpfin.score>33?'#3E92E6':'#EF5655')+';'}}">{{valpfin.score+'分'}}</view>
+                                    <view class="pifucontlituinps">取值范围0-100分,得分越高越好</view>
+                                </view>
+                            </view>
+                            <view class="pifucontlitu">
+                                <image alt class="pifucontlituimg1 _img" src="{{valpfin.img}}"></image>
+                                <image alt class="pifucontlituimg2 _img" src="{{'https://diag.wuzhengai.com/appimage/pifu'+valpfin.imgtype+1+'.png'}}"></image>
+                            </view>
+                            <view class="pifucontlizhibiao" wx:for="{{valpfin.report}}" wx:for-index="indexzou" wx:for-item="valzou" wx:key="indexzou">
+                                <view class="pifucontlitop" style="background:none;">
+                                    <view class="pifucontlitopspan"></view>
+                                    <view class="pifucontlitopname">{{valzou.name}}</view>
+                                </view>
+                                <view class="pifucontlizhibiaops">{{valzou.value}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportkuai" wx:if="{{msgval[$orig].moduleType=='coreIndex'}}">
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType!='heartBrain'&&msgps.funcationType!='hrv'}}">
+                    <view class="reportfenxi">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">{{msgval[$orig].moduleName+''}}</view>
+                    </view>
+                    <view style="font-size:18rpx;font-weight:400;margin-left:10rpx;color:#385C8B;float:left;">(数值绿色为正常，黄色为临界值，红色为异常)单次检测仅供参考，如有偏差建议进行多次检测</view>
+                    <view class="reportfenxiyinzi">
+                        <view class="reportfenxiyinzitop">
+                            <view class="reportfenxiyinzitop1">测量指标</view>
+                            <view class="reportfenxiyinzitop2">测量结果</view>
+                            <view class="reportfenxiyinzitop2s">参考值</view>
+                            <view class="reportfenxiyinzitop3">单位</view>
+                            <view class="reportfenxiyinzitop4">结果</view>
+                        </view>
+                        <view class="reportfenxiyinzili" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                            <view class="reportfenxiyinzili1">{{val.funcationName}}</view>
+                            <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==2?'#74C045':val.dataType==3?'#FFB51C':val.dataType==5?'#EF5655':'')+';'}}" wx:if="{{val.funcationType=='10050'}}">{{val.result}}</view>
+                            <block wx:else>
+                                <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':'')+';'}}" wx:if="{{val.funcationType=='10125'}}">{{val.result}}</view>
+                                <block wx:else>
+                                    <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==2?'#74c045':val.dataType==11?'#1890FF':val.dataType==12?'#F4A627':val.dataType==13?'#EF5655':'#74c045')+';'}}" wx:if="{{val.funcationType=='10135'}}">{{val.result}}</view>
+                                    <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':val.dataType==3?'#EF5655':'#FFB51C')+';'}}" wx:else>{{val.result}}</view>
+                                </block>
+                            </block>
+                            <view class="reportfenxiyinzili2s">{{val.normalValue?val.normalValue:'--'}}</view>
+                            <view class="reportfenxiyinzili3">{{val.unit}}</view>
+                            <view class="reportfenxiyinzili4">
+                                <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10017'}}">
+                                    <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                                    <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                                </view>
+                                <block wx:else>
+                                    <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10008'}}">
+                                        <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{(val.dataType==4?'临界值':'较低')+'<'}}</view>
+                                        <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                                    </view>
+                                    <block wx:else>
+                                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10122'}}">
+                                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==3?'#EF5655':val.dataType==2?'#74C045':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{'较低'+'<'}}</view>
+                                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                                        </view>
+                                        <block wx:else>
+                                            <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10050'}}">
+                                                <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74c045':'#E0EDFC')+';'+'color:'+(val.dataType==2?'#fff':'#6C9ADB')+';'}}">正常</view>
+                                                <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==3?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                                                <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==5?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==5?'#fff':'#6C9ADB')+';'}}">过高</view>
+                                            </view>
+                                            <block wx:else>
+                                                <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10122'}}">
+                                                    <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">较低</view>
+                                                    <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==2?'#74C045':'#E0EDFC')+';'+'color:'+(val.dataType==2?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">较高</view>
+                                                </view>
+                                                <block wx:else>
+                                                    <view class="reportfenxiyinzili4s" style="display:flex;" wx:if="{{val.funcationType=='10135'}}">
+                                                        <view class="reportfenxiyinzili4sli1" style="{{'flex:'+1+';'+'background:'+(val.dataType==2?'#74c045':'#E0EDFC')+';'+'color:'+(val.dataType==2?'#fff':'#6C9ADB')+';'+'width:'+'24%'+';'+'margin-right:'+'1%'+';'}}">无</view>
+                                                        <view class="reportfenxiyinzili4sli2" style="{{'flex:'+1+';'+'background:'+(val.dataType==11?'#1890FF':'#E0EDFC')+';'+'color:'+(val.dataType==11?'#fff':'#6C9ADB')+';'+'width:'+'24%'+';'+'margin-right:'+'1%'+';'}}">轻度</view>
+                                                        <view class="reportfenxiyinzili4sli2" style="{{'flex:'+1+';'+'background:'+(val.dataType==12?'#F4A627':'#E0EDFC')+';'+'color:'+(val.dataType==12?'#fff':'#6C9ADB')+';'+'width:'+'24%'+';'+'margin-right:'+'1%'+';'}}">中度</view>
+                                                        <view class="reportfenxiyinzili4sli3" style="{{'flex:'+1+';'+'background:'+(val.dataType==13?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==13?'#fff':'#6C9ADB')+';'+'width:'+'24%'+';'}}">重度</view>
+                                                    </view>
+                                                    <view class="reportfenxiyinzili4s" wx:else>
+                                                        <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'}}">偏低</view>
+                                                        <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                                                        <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                                                    </view>
+                                                </block>
+                                            </block>
+                                        </block>
+                                    </block>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{msgps.num<0}}">
+                        <view class="reportfenxi" style="margin-top:20rpx;">
+                            <view class="reportfenxileft"></view>
+                            <view class="reportfenxiname">核心指标正常解读</view>
+                        </view>
+                        <view class="reportfenxitxt">
+                            <view wx:for="{{msgps.coreNormalInfo}}" wx:for-item="val" wx:key="index">
+                                <rich-text nodes="{{val}}"></rich-text>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{msgval.g5}}">
+                        <view wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                            <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.num>=0&&val.dataType!=4&&index==0}}">
+                                <view class="reportfenxileft"></view>
+                                <view class="reportfenxiname">核心指标异常解读</view>
+                            </view>
+                        </view>
+                        <view class="reportfenxitxt" wx:if="{{msgps.num>=0}}">
+                            <view wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                                <view wx:if="{{val.dataType!=2&&val.dataType!=4}}">{{val.funcationName+'：'+val.info}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{val.g6}}" wx:for="{{msgval.l1}}" wx:for-item="val" wx:key="index">
+                        <view class="reportfenxi" style="margin-top:20rpx;">
+                            <view class="reportfenxileft"></view>
+                            <view class="reportfenxiname">临界值指标解读</view>
+                        </view>
+                    </view>
+                    <view class="reportfenxitxt" wx:if="{{msgval.g7}}">
+                        <view wx:if="{{val.dataType==4}}" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">{{val.funcationName+'：'+val.info}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportkuai" style="padding-top:16rpx;" wx:if="{{msgval[$orig].moduleType=='hrvIndexAnalysis'||msgval[$orig].moduleType=='hrvHeartBrainIndexAnalysis'}}">
+                <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.funcationType==0||msgps.funcationType=='hrv'}}">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">心率变异性相关指标分析</view>
+                </view>
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0&&msgps.hrvHeartBrainData.hrvTrendInfo!=null}}">
+                    <view style="width:100%;float:left;">
+                        <view class="reportfenxi" style="margin-top:20rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">心率变异性综合趋势图</view>
+                        </view>
+                        <view style="height:200rpx;width:100%;float:left;">
+                            <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhehrv1}}" opts="{{optszhehrv1}}" type="area" vueId="{{'f2f43bf8-1-'+indexval}}"></qiun-data-charts>
+                        </view>
+                    </view>
+                    <view style="width:100%;float:left;">
+                        <view class="reportfenxi" style="margin-top:20rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">心率变异性总趋势说明</view>
+                        </view>
+                        <view class="reportfenxitxt" wx:if="{{msgps.hrvHeartBrainData.sdnnTrendInfo}}">
+                            <view class="rppgreportdocsuncontpsinps">
+                                <rich-text nodes="{{msgps.hrvHeartBrainData.sdnnTrendInfo}}"></rich-text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0||msgps.funcationType=='hrv'}}">
+                    <view class="reportfenxi" style="margin-top:20rpx;">
+                        <view class="reportfenxiname" style="font-size:26rpx;">心率变异性说明</view>
+                    </view>
+                    <view class="reportfenxitxt" style="margin-top:16rpx;" wx:if="{{msgps.funcationType==0}}">
+                        <view>心率变异性(HRV)可以评估心脏自主神经的均衡性以及对心血管系统活动的影响，是预测心脏性猝死和心律失常等心脑疾病及情绪状态的一个有价值的指标。您的心率变异性分析如下：</view>
+                        <view style="font-weight:bold;">心脑风险:</view>
+                        <view>
+                            <label class="_span" style="{{'color:'+(item.color==1?'#74C045':item.color==2?'#1890FF':item.color==3?'#1890FF':item.color==4?'#F4A627':item.color==5?'#EF5655':'#385C8B')+';'+'font-weight:'+(item.color==0?'400':'bold')+';'}}" wx:for="{{msgps.hrvHeartBrainData.heartBrainInfo.colorTextList}}" wx:key="index">{{''+item.text+''}}</label>
+                        </view>
+                        <view style="font-weight:bold;">情绪风险:</view>
+                        <view>
+                            <label class="_span" style="{{'color:'+(item.color==1?'#74C045':item.color==2?'#1890FF':item.color==3?'#1890FF':item.color==4?'#F4A627':item.color==5?'#EF5655':'#385C8B')+';'+'font-weight:'+(item.color==0?'400':'bold')+';'}}" wx:for="{{msgps.hrvHeartBrainData.moodInfo.colorTextList}}" wx:key="index">{{''+item.text+''}}</label>
+                        </view>
+                    </view>
+                    <view class="reportfenxitxt" style="margin-top:16rpx;" wx:if="{{msgps.funcationType=='hrv'}}">{{''+msgps.hrvHeartBrainData.hrvHeartBrainUnscramble+''}}</view>
+                </view>
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0}}">
+                    <view style="width:300rpx;float:left;height:190rpx;">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatald}}" opts="{{optsld}}" type="radar" vueId="{{'f2f43bf8-2-'+indexval}}"></qiun-data-charts>
+                    </view>
+                    <view style="width:300rpx;float:left;height:100rpx;padding-top:10rpx;box-sizing:border-box;margin-left:40rpx;">
+                        <view class="xinbanli" style="margin-top:30rpx;" wx:for="{{leidamsg}}" wx:key="index">
+                            <view class="xinbanliname">
+                                <label class="name _span">{{item.name}}</label>
+                                <label class="nameps _span" style="{{'color:'+(item.color?item.color:'#1890FF')+';'+'font-weight:'+'bold'+';'}}">{{''+(item.describe?item.describe:'无')}}</label>
+                            </view>
+                            <view class="xinbanlidi"></view>
+                        </view>
+                    </view>
+                </view>
+                <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.funcationType=='hrv'}}">
+                    <view class="reportfenxiname" style="font-size:26rpx;">心率变异性评分</view>
+                </view>
+                <view style="width:100%;float:left;height:190rpx;" wx:if="{{msgps.funcationType=='hrv'}}">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatajb}}" opts="{{optsjb}}" type="line" vueId="{{'f2f43bf8-3-'+indexval}}"></qiun-data-charts>
+                </view>
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType=='hrv'||msgps.funcationType=='0'}}">
+                    <view class="reportfenxi" style="margin-top:20rpx;">
+                        <view class="reportfenxiname" style="font-size:26rpx;">建议</view>
+                    </view>
+                    <view class="reportfenxitxt" style="margin-top:16rpx;" wx:if="{{msgps.funcationType==0}}">
+                        <view style="font-weight:bold;">心脑建议:</view>
+                        <view wx:for="{{msgval.l2}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                        <view style="margin-top:10rpx;font-weight:bold;">情绪建议:</view>
+                        <view wx:for="{{msgval.l3}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                    </view>
+                    <view class="reportfenxitxt" style="margin-top:16rpx;" wx:if="{{msgps.funcationType=='hrv'}}">{{''+msgps.hrvHeartBrainData.hrvHeartBrainAdvice+''}}</view>
+                </view>
+            </view>
+            <view class="reportkuai" wx:if="{{msgps.funcationType=='hrv'&&msgval[$orig].moduleType=='referenceIndex'}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportfenxi" style="margin-top:10rpx;" wx:if="{{msgval.g8}}">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">以下指标仅供参考</view>
+                    </view>
+                    <view style="font-size:18rpx;font-weight:400;margin-left:10rpx;color:#385C8B;float:left;" wx:if="{{msgval.g9>0}}">(数值绿色为正常，黄色为临界值，红色为异常)单次检测仅供参考，如有偏差建议进行多次检测)</view>
+                    <view class="reportfenxiyinzi" wx:if="{{msgval.g10>0}}">
+                        <view class="reportfenxiyinzitop">
+                            <view class="reportfenxiyinzitop1">测量指标</view>
+                            <view class="reportfenxiyinzitop2">测量结果</view>
+                            <view class="reportfenxiyinzitop2s">参考值</view>
+                            <view class="reportfenxiyinzitop3">单位</view>
+                            <view class="reportfenxiyinzitop4">结果</view>
+                        </view>
+                        <view class="reportfenxiyinzili" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                            <view class="reportfenxiyinzili1">{{val.funcationName}}</view>
+                            <view class="reportfenxiyinzili2" style="{{'color:'+(val.dataType==1?'#EF5655':val.dataType==2?'#74C045':val.dataType==3?'#EF5655':'#FFB51C')+';'}}">{{val.result}}</view>
+                            <view class="reportfenxiyinzili2s">{{val.normalValue?val.normalValue:'--'}}</view>
+                            <view class="reportfenxiyinzili3">{{val.unit}}</view>
+                            <view class="reportfenxiyinzili4">
+                                <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10017'||val.funcationType=='10123'||val.funcationType=='10124'}}">
+                                    <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                                    <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                                </view>
+                                <block wx:else>
+                                    <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10008'}}">
+                                        <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">{{(val.dataType==4?'临界值':'较低')+'<'}}</view>
+                                        <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">偏高</view>
+                                    </view>
+                                    <block wx:else>
+                                        <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10050'}}">
+                                            <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==2?'#74c045':'#E0EDFC')+';'+'color:'+(val.dataType==2?'#fff':'#6C9ADB')+';'}}">正常</view>
+                                            <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==3?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                                            <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==5?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==5?'#fff':'#6C9ADB')+';'}}">过高</view>
+                                        </view>
+                                        <block wx:else>
+                                            <view class="reportfenxiyinzili4s" wx:if="{{val.funcationType=='10122'}}">
+                                                <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">较低</view>
+                                                <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==2?'#74C045':'#E0EDFC')+';'+'color:'+(val.dataType==2?'#fff':'#6C9ADB')+';'+'width:'+'45.5%'+';'}}">较高</view>
+                                            </view>
+                                            <view class="reportfenxiyinzili4s" wx:else>
+                                                <view class="reportfenxiyinzili4sli1" style="{{'background:'+(val.dataType==1?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==1?'#fff':'#6C9ADB')+';'}}">偏低</view>
+                                                <view class="reportfenxiyinzili4sli2" style="{{'background:'+(val.dataType==2?'#74C045':val.dataType==4?'#FFB51C':'#E0EDFC')+';'+'color:'+(val.dataType==2||val.dataType==4?'#fff':'#6C9ADB')+';'}}">{{val.dataType==4?'临界值':'正常'}}</view>
+                                                <view class="reportfenxiyinzili4sli3" style="{{'background:'+(val.dataType==3?'#EF5655':'#E0EDFC')+';'+'color:'+(val.dataType==3?'#fff':'#6C9ADB')+';'}}">偏高</view>
+                                            </view>
+                                        </block>
+                                    </block>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="reportfenxi" style="margin-top:20rpx;" wx:if="{{msgps.num1>=0}}">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">以下指标解读仅供参考</view>
+                    </view>
+                    <view class="reportfenxitxt" style="word-break:break-word;" wx:if="{{msgps.num>=0}}">
+                        <view style="width:100%;word-break:break-word;">根据您本次的检测数据，提示您<text wx:if="{{val.dataType!=2}}" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">{{val.funcationName}}<text wx:if="{{msgps.num!=index}}">、</text>
+                            </text>异常，分别为：</view>
+                        <view wx:if="{{val.dataType!=2}}" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">{{val.funcationName+'：'+val.info}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportkuai" style="padding-top:16rpx;" wx:if="{{msgval[$orig].moduleType=='heartBrainMood'}}">
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0||msgps.funcationType=='heartBrain'}}">
+                    <view class="reportfenxi" style="margin-top:20rpx;">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">HRV心脑及身体健康分析</view>
+                    </view>
+                    <view style="width:100%;float:left;" wx:for="{{msgval.l4}}" wx:for-item="val" wx:key="index">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">{{val[$orig].name}}</view>
+                        </view>
+                        <view class="reportyali">
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='心脑风险'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m2}}" wx:if="{{val[$orig].score==1}}"></image>无风险</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m3}}" wx:if="{{val[$orig].score==2}}"></image>低风险</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m4}}" wx:if="{{val[$orig].score==3}}"></image>中风险</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m5}}" wx:if="{{val[$orig].score==4}}"></image>高风险</view>
+                            </view>
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='失眠'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m6}}" wx:if="{{val[$orig].score==1}}"></image>睡眠充足</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m7}}" wx:if="{{val[$orig].score==2}}"></image>轻度失眠</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m8}}" wx:if="{{val[$orig].score==3}}"></image>中度失眠</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m9}}" wx:if="{{val[$orig].score==4}}"></image>重度失眠</view>
+                            </view>
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='疲劳'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m10}}" wx:if="{{val[$orig].score==1}}"></image>精力充沛</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m11}}" wx:if="{{val[$orig].score==2}}"></image>轻度疲劳</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m12}}" wx:if="{{val[$orig].score==3}}"></image>中度疲劳</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m13}}" wx:if="{{val[$orig].score==4}}"></image>重度疲劳</view>
+                            </view>
+                            <view class="biaoge11_15" style="border:none;">
+                                <view class="biaogetop2_4">
+                                    <view class="biaogetopname2_4">
+                                        <view class="biaogetopname12_4">{{val[$orig].name+'指数'}}</view>
+                                        <view class="biaogetopname22_4" style="{{'color:'+(val[$orig].score==1?'#74C045':val[$orig].score==2?'#1890FF':val[$orig].score==3?'#F4A627':val[$orig].score==4?'#EF5655':'#385C8B')+';'+'font-size:'+'32rpx'+';'}}">{{val[$orig].index}}</view>
+                                        <view class="biaogetopname32_4" style="{{'color:'+(val[$orig].score==1?'#74C045':val[$orig].score==2?'#1890FF':val[$orig].score==3?'#F4A627':val[$orig].score==4?'#EF5655':'#385C8B')+';'+'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                            <text wx:if="{{val[$orig].name=='心脑风险'}}">{{val[$orig].score==1?'无风险':val[$orig].score==2?'低分险':val[$orig].score==3?'中风险':'高分险'}}</text>
+                                            <text wx:if="{{val[$orig].name=='失眠'}}">{{val[$orig].score==1?'睡眠充足':val[$orig].score==2?'轻度失眠':val[$orig].score==3?'中度失眠':'重度失眠'}}</text>
+                                            <text wx:if="{{val[$orig].name=='疲劳'}}">{{val[$orig].score==1?'精力充沛':val[$orig].score==2?'轻度疲劳':val[$orig].score==3?'中度疲劳':'重度疲劳'}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="biaogetopnameps2_4">{{'解读：'+val[$orig].unscramble+''}}</view>
+                                </view>
+                                <view class="biaogelist2_4">
+                                    <view class="biaogeli2_4" wx:for="{{val[$orig].riskFactorAnalysisDataList}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">
+                                        <view class="biaogeliname2_4">{{''+val1.funcationName+''}}</view>
+                                        <view class="biaogelinameps2_4">
+                                            <view style="width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{val1.result}}</view>
+                                            <view>{{val1.dataType==1?'偏低':val1.dataType==2?'正常':val1.dataType==3?'偏高':'临界值'}}</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportkuai" style="padding-top:16rpx;" wx:if="{{msgval[$orig].moduleType=='hrvMood'}}">
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0||msgps.funcationType=='hrv'}}">
+                    <view class="reportfenxi" style="margin-top:20rpx;">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">HRV精神指数</view>
+                    </view>
+                    <view style="width:100%;float:left;" wx:if="{{msgps.funcationType==0&&msgps.hrvHeartBrainData.hrvTrendInfo!=null}}">
+                        <view style="width:100%;float:left;">
+                            <view class="reportfenxi" style="margin-top:20rpx;">
+                                <view class="reportfenxiname" style="font-size:26rpx;">自主神经活动状态</view>
+                            </view>
+                            <view style="height:200rpx;width:100%;float:left;">
+                                <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhehrv}}" opts="{{optszhehrv}}" type="area" vueId="{{'f2f43bf8-4-'+indexval}}"></qiun-data-charts>
+                            </view>
+                        </view>
+                        <view style="width:100%;float:left;">
+                            <view class="reportfenxi" style="margin-top:20rpx;">
+                                <view class="reportfenxiname" style="font-size:26rpx;">自主神经活动说明</view>
+                            </view>
+                            <view class="reportfenxitxt">
+                                <view class="rppgreportdocsuncontpsinps" wx:if="{{!msgval.g11}}">
+                                    <rich-text nodes="{{msgps.hrvHeartBrainData.hrvTrendInfo}}"></rich-text>
+                                </view>
+                                <view class="rppgreportdocsuncontpsinps" wx:if="{{msgval.g12}}">
+                                    <view wx:for="{{msgval.l5}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view style="width:100%;float:left;" wx:for="{{msgval.l6}}" wx:for-item="val" wx:key="index">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">{{val[$orig].name}}</view>
+                        </view>
+                        <view class="reportyali">
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='焦虑'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m14}}" wx:if="{{val[$orig].score==1}}"></image>较低</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m15}}" wx:if="{{val[$orig].score==2}}"></image>轻度焦虑</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m16}}" wx:if="{{val[$orig].score==3}}"></image>中度焦虑</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m17}}" wx:if="{{val[$orig].score==4}}"></image>重度焦虑</view>
+                            </view>
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='抑郁'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m18}}" wx:if="{{val[$orig].score==1}}"></image>较低</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m19}}" wx:if="{{val[$orig].score==2}}"></image>轻度抑郁</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m20}}" wx:if="{{val[$orig].score==3}}"></image>中度抑郁</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m21}}" wx:if="{{val[$orig].score==4}}"></image>重度抑郁</view>
+                            </view>
+                            <view class="reportyalilist" style="margin-top:5rpx;" wx:if="{{val[$orig].name=='压力'}}">
+                                <view class="{{[val[$orig].score==1?'reportyalilistli1':'reportyalilistli1 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m22}}" wx:if="{{val[$orig].score==1}}"></image>较低</view>
+                                <view class="{{[val[$orig].score==2?'reportyalilistli3':'reportyalilistli3 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m23}}" wx:if="{{val[$orig].score==2}}"></image>轻度压力</view>
+                                <view class="{{[val[$orig].score==3?'reportyalilistli4':'reportyalilistli4 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m24}}" wx:if="{{val[$orig].score==3}}"></image>中度压力</view>
+                                <view class="{{[val[$orig].score==4?'reportyalilistli5':'reportyalilistli5 colorin']}}" style="width:24.7%;">
+                                    <image alt class="reportyalilistimg _img" src="{{val.m25}}" wx:if="{{val[$orig].score==4}}"></image>重度压力</view>
+                            </view>
+                            <view class="biaoge11_15" style="border:none;">
+                                <view class="biaogetop2_4">
+                                    <view class="biaogetopname2_4">
+                                        <view class="biaogetopname12_4">{{val[$orig].name+'指数'}}</view>
+                                        <view class="biaogetopname22_4" style="{{'color:'+(val[$orig].score==1?'#74C045':val[$orig].score==2?'#1890FF':val[$orig].score==3?'#F4A627':val[$orig].score==4?'#EF5655':'#385C8B')+';'+'font-size:'+'32rpx'+';'}}">{{val[$orig].index}}</view>
+                                        <view class="biaogetopname32_4" style="{{'color:'+(val[$orig].score==1?'#74C045':val[$orig].score==2?'#1890FF':val[$orig].score==3?'#F4A627':val[$orig].score==4?'#EF5655':'#385C8B')+';'+'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                            <text wx:if="{{val[$orig].name=='焦虑'}}">{{val[$orig].score==1?'较低':val[$orig].score==2?'轻度焦虑':val[$orig].score==3?'中度焦虑':'重度焦虑'}}</text>
+                                            <text wx:if="{{val[$orig].name=='抑郁'}}">{{val[$orig].score==1?'较低':val[$orig].score==2?'轻度抑郁':val[$orig].score==3?'中度抑郁':'重度抑郁'}}</text>
+                                            <text wx:if="{{val[$orig].name=='压力'}}">{{val[$orig].score==1?'较低':val[$orig].score==2?'轻度压力':val[$orig].score==3?'中度压力':'重度压力'}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="biaogetopnameps2_4">{{'解读：'+val[$orig].unscramble+''}}</view>
+                                </view>
+                                <view class="biaogelist2_4">
+                                    <view class="biaogeli2_4" wx:for="{{val[$orig].riskFactorAnalysisDataList}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">
+                                        <view class="biaogeliname2_4">{{''+val1.funcationName+''}}</view>
+                                        <view class="biaogelinameps2_4">
+                                            <view style="width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{val1.result}}</view>
+                                            <view>{{val1.dataType==1?'偏低':val1.dataType==2?'正常':val1.dataType==3?'偏高':'临界值'}}</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view style="width:100%;float:left;" wx:if="{{msgps.funcationType=='hrv'&&msgval[$orig].moduleType=='hrvSport'}}">
+                <view class="reportfenxi" style="margin-top:20rpx;">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">运动建议</view>
+                </view>
+                <view style="width:100%;float:left;">
+                    <view class="reportfenxi" style="margin-top:30rpx;">
+                        <view class="reportfenxiname" style="font-size:26rpx;">强度</view>
+                    </view>
+                    <view class="reportyali">
+                        <view class="reportyalilist">
+                            <view class="reportyalilistli1">
+                                <image alt class="reportyalilistimg _img" src="{{msgval.m26}}" wx:if="{{msgps.hrvHeartBrainData.hrvHeartBrainScore==1}}"></image>低</view>
+                            <view class="reportyalilistli2">
+                                <image alt class="reportyalilistimg _img" src="{{msgval.m27}}" wx:if="{{msgps.hrvHeartBrainData.hrvHeartBrainScore==2}}"></image>较低</view>
+                            <view class="reportyalilistli3">
+                                <image alt class="reportyalilistimg _img" src="{{msgval.m28}}" wx:if="{{msgps.hrvHeartBrainData.hrvHeartBrainScore==3}}"></image>中</view>
+                            <view class="reportyalilistli4">
+                                <image alt class="reportyalilistimg _img" src="{{msgval.m29}}" wx:if="{{msgps.hrvHeartBrainData.hrvHeartBrainScore==4}}"></image>较高</view>
+                            <view class="reportyalilistli5">
+                                <image alt class="reportyalilistimg _img" src="{{msgval.m30}}" wx:if="{{msgps.hrvHeartBrainData.hrvHeartBrainScore==5}}"></image>高</view>
+                        </view>
+                        <view class="reportfenxitxt" style="margin-top:16rpx;">{{msgps.hrvHeartBrainData.sportInfo+''}}</view>
+                    </view>
+                </view>
+                <view style="width:100%;float:left;" wx:if="{{msgps.funcationType=='hrv'&&msgval[$orig].moduleType=='hrvSport'}}">
+                    <view style="width:100%;float:left;">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">适宜项目</view>
+                        </view>
+                        <view class="shiyilist _div" style="margin-top:10rpx;">
+                            <view class="shiyili _div" wx:for="{{msgps.hrvHeartBrainData.sportItemList}}" wx:for-item="val" wx:key="index">
+                                <image class="shiyiliimg _img" src="{{val.iconImg}}"></image>
+                                <view class="shiyiliname _div">{{val.name}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view style="width:100%;float:left;">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">改善趋势</view>
+                        </view>
+                        <view class="genlian" style="height:160rpx;">
+                            <qiun-data-charts bind:__l="__l" chartData="{{chartDataqs}}" opts="{{optsqs}}" type="line" vueId="{{'f2f43bf8-5-'+indexval}}"></qiun-data-charts>
+                        </view>
+                    </view>
+                    <view style="width:100%;float:left;">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxiname" style="font-size:26rpx;">跟练方法</view>
+                        </view>
+                        <view class="genlian" style="margin-top:10rpx;" wx:for="{{msgps.hrvHeartBrainData.sportItemList}}" wx:for-item="val" wx:key="index">{{''+val.contactMethod+''}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportkuai" wx:if="{{msgval[$orig].moduleType=='diseaseRiskPotential'}}">
+                <view class="reportfenxi" wx:if="{{msgps.funcationType==0||msgps.funcationType=='heartBrain'||msgps.funcationType=='hrv'}}">
+                    <view class="reportfenxileft"></view>
+                    <view class="reportfenxiname">疾病风险分析</view>
+                </view>
+                <view class="reportbinglistbox">
+                    <view class="reportbinglist" wx:if="{{msgps.funcationType==0&&msgps.diseaseGrade!=null}}">
+                        <view class="reportbingli" style="{{'width:'+'100%'+';'+'float:'+'left'+';'+'background:'+(index5%2==0?'#DAEEFF':'#EEF8FF')+';'+'border-top:'+'1rpx solid #85C2FC'+';'}}" wx:for="{{msgval.l8}}" wx:for-index="index5" wx:for-item="val5" wx:key="index5">
+                            <view class="reportbinglips" style="width:10%;">
+                                <view class="reportbinglipsname" wx:if="{{index5==0}}">疾病</view>
+                                <view class="reportbinglipsnameps">{{val5[$orig].diseaseName}}</view>
+                            </view>
+                            <view class="reportbinglips" style="{{'width:'+90/val5.g13+'%'+';'+'float:'+'left'+';'}}" wx:for="{{val5.l7}}" wx:for-index="index6" wx:for-item="val6" wx:key="index6">
+                                <view class="reportbinglipsname" wx:if="{{index5==0}}">{{val6[$orig].funcationName}}</view>
+                                <view class="reportbinglipsnameps">
+                                    <image class="lipsimg _img" src="{{val6.m31}}" wx:if="{{val6[$orig].dataType==2||val6[$orig].dataType==4}}"></image>
+                                    <image class="lipsimg _img" src="{{val6.m32}}" wx:if="{{val6[$orig].dataType==1||val6[$orig].dataType==3}}"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="reportzhishutop">
+                    <scroll-view class="navscroll" scrollX="{{true}}">
+                        <view bindtap="__e" class="reportzhishutopli" data-event-opts="{{[ [ 'tap',[ [ 'typeinps',['$0'],[ [ ['msgps.diseaseRiskPotentialList','',index] ] ] ] ] ] ]}}" wx:for="{{msgps.diseaseRiskPotentialList}}" wx:for-item="val" wx:key="index">
+                            <view class="{{[val.cl?'reportzhishutopliname':'reportzhishutoplinameps']}}">{{''+val.diseaseName+''}}<view class="reportzhishutoplidi" wx:if="{{val.cl}}"></view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view class="reportzhishu">
+                    <view class="reportfenxi">
+                        <view class="reportfenxileft"></view>
+                        <view class="reportfenxiname">风险趋势预测分析</view>
+                    </view>
+                    <view style="width:300rpx;float:left;font-size:20rpx;font-family:PingFang-SC-Regular, PingFang-SC;font-weight:400;color:#385C8B;line-height:37rpx;margin-top:10rpx;padding-left:40rpx;box-sizing:border-box;">疾病发展趋势(单位:月)</view>
+                    <view style="width:300rpx;float:right;font-size:20rpx;font-family:PingFang-SC-Regular, PingFang-SC;font-weight:400;color:#385C8B;line-height:37rpx;margin-top:10rpx;padding-left:10rpx;box-sizing:border-box;">疾病风险随时间的变化(单位:%)</view>
+                    <view class="reportzhishutu1">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartData1}}" class="charts1" ontouch="{{true}}" opts="{{opts}}" tooltipFormat="tooltipTemp1" type="line" vueId="{{'f2f43bf8-6-'+indexval}}"></qiun-data-charts>
+                    </view>
+                    <view class="reportzhishutu2">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartData2}}" class="charts2" ontouch="{{true}}" opts="{{opts}}" tooltipFormat="tooltipTemp1" type="column" vueId="{{'f2f43bf8-7-'+indexval}}"></qiun-data-charts>
+                    </view>
+                    <view class="reportzhishutxt">疾病概述</view>
+                    <view class="reportfenxitxt">
+                        <view>{{'症状：'+dise.symptom}}</view>
+                        <view>{{dise.diseaseDesc}}</view>
+                    </view>
+                    <view class="reportzhishutxt">预防措施</view>
+                    <view class="reportfenxitxt">
+                        <view wx:for="{{msgval.l9}}" wx:for-index="indexn" wx:for-item="valn" wx:key="indexn">
+                            <view>{{valn}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{msgval[$orig].moduleType=='moodStatistics'}}">
+                <view class="reportkuai" wx:if="{{msgps.funcationType=='heartBrain'||msgps.funcationType=='hrv'}}">
+                    <view style="width:100%;float:left;" wx:for="{{msgps.hrvHeartBrainData.moodStatisticsList}}" wx:for-item="val" wx:key="index">
+                        <view class="reportfenxi" style="margin-top:30rpx;">
+                            <view class="reportfenxileft"></view>
+                            <view class="reportfenxiname">{{val.name}}</view>
+                        </view>
+                        <view class="genlian" style="height:120rpx;">
+                            <tubiaops bind:__l="__l" chartDatain="{{val}}" style="width:180rpx;float:left;" type="1" vueId="{{'f2f43bf8-8-'+indexval+'-'+index}}"></tubiaops>
+                            <view class="xinbanli" style="margin-top:20rpx;width:190rpx;" wx:for="{{val.data}}" wx:for-index="index1" wx:key="index1">
+                                <view class="xinbanliname">
+                                    <label class="namepstou _span" style="{{'background:'+item.color+';'}}"></label>
+                                    <label class="name _span">{{item.name+'风险'}}</label>
+                                    <label class="nameps _span" style="color:#385C8B;">{{item.value+'次'}}</label>
+                                </view>
+                                <view class="xinbanlidi" style="left:30rpx;"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <indexdocsun bind:__l="__l" class="vue-ref" data-ref="indexdocsunid" vueId="f2f43bf8-9" wx:if="{{version==4}}"></indexdocsun>
+</view>

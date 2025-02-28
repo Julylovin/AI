@@ -1,0 +1,63 @@
+<view class="data-v-a2c12c6a">
+    <view class="reporthistory data-v-a2c12c6a">
+        <view class="historytop data-v-a2c12c6a">
+            <scroll-view class="navscroll data-v-a2c12c6a" scrollX="{{true}}" style="height:100rpx;">
+                <view bindtap="__e" class="historytopli data-v-a2c12c6a" data-event-opts="{{[ [ 'tap',[ [ 'typein',[index] ] ] ] ]}}" wx:for="{{msgtype}}" wx:for-item="val" wx:key="index">
+                    <view class="{{['data-v-a2c12c6a',val.cl?'btntoplitxt btntoplitxtact':'btntoplitxt']}}">
+                        <view class="data-v-a2c12c6a" style="width:64rpx;height:64rpx;float:left;padding-top:6rpx;">
+                            <image class="_img data-v-a2c12c6a" src="{{val.icon0}}" style="width:100%;height:100%;"></image>
+                        </view>
+                        <view class="data-v-a2c12c6a" style="float:left;line-height:70rpx;margin-right:14rpx;">{{val.name}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="reporthistory data-v-a2c12c6a" wx:if="{{$root.g0==0}}">
+            <view class="shouyewu data-v-a2c12c6a">
+                <image alt class="shouyewuimg _img data-v-a2c12c6a" src="https://diag.wuzhengai.com/image/lishi.png"></image>
+                <view class="shouyewuname data-v-a2c12c6a">暂无历史数据</view>
+            </view>
+        </view>
+        <view class="rppglist historylist data-v-a2c12c6a" wx:if="{{$root.g1>0}}">
+            <view class="rppgli data-v-a2c12c6a" wx:for="{{$root.l1}}" wx:for-item="val" wx:key="id">
+                <view bindtap="__e" class="rppglitop data-v-a2c12c6a" data-event-opts="{{[ [ 'tap',[ [ 'baogao',['$0'],[ [ ['msg','id',val[$orig].id] ] ] ] ] ] ]}}">
+                    <image alt class="rppglitopimg _img data-v-a2c12c6a" src="{{val.m0}}"></image>
+                    <view class="time data-v-a2c12c6a">{{val[$orig].createTime}}</view>
+                    <image alt class="rppglitopimgps _img data-v-a2c12c6a" src="{{val.m1}}"></image>
+                    <view class="txt data-v-a2c12c6a">{{val[$orig].analyzeStatus==0?'点击查看报告':val[$orig].analyzeStatus==-1?'正在分析中':'分析失败'}}</view>
+                </view>
+                <view class="rppglibot data-v-a2c12c6a">
+                    <view class="left data-v-a2c12c6a">
+                        <view class="rppglicont data-v-a2c12c6a" style="{{'background:'+(val[$orig].healthScore==1?'#fbad3a':val[$orig].healthScore==2?'#74C045':val[$orig].healthScore==3?'#ef6c6b':'#74C045')+';'}}" wx:if="{{form.reportType=='1'||form.reportType=='5'}}">
+                            <view class="ping data-v-a2c12c6a">综合评定</view>
+                            <view class="pingtype data-v-a2c12c6a">{{val[$orig].healthScoreName}}</view>
+                        </view>
+                        <block wx:else>
+                            <view class="rppglicont data-v-a2c12c6a" style="{{'background:'+(val[$orig].healthScore==1?'#74C045':val[$orig].healthScore==2?'#1890FF':val[$orig].healthScore==3?'#fbad3a':val[$orig].healthScore==4?'#ef6c6b':'#1890FF')+';'}}" wx:if="{{form.reportType=='6'}}">
+                                <view class="ping data-v-a2c12c6a">综合评定</view>
+                                <view class="pingtype data-v-a2c12c6a">{{val[$orig].healthScoreName+(val[$orig].healthScore==1?'优秀':val[$orig].healthScore==2?'良好':val[$orig].healthScore==3?'一般':val[$orig].healthScore==4?'较差':'')}}</view>
+                            </view>
+                            <view class="rppglicont data-v-a2c12c6a" style="{{'background:'+(val[$orig].healthScore==1?'#74C045':val[$orig].healthScore==2?'#1890FF':val[$orig].healthScore==3?'#fbad3a':val[$orig].healthScore==4?'#ef6c6b':'#1890FF')+';'}}" wx:else>
+                                <view class="ping data-v-a2c12c6a">{{val[$orig].healthScoreName}}</view>
+                                <view class="pingtype data-v-a2c12c6a">{{val[$orig].healthRating}}</view>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="right data-v-a2c12c6a">
+                        <scroll-view class="navscroll data-v-a2c12c6a" scrollX="{{true}}" style="height:200rpx;">
+                            <view class="rppglicontli data-v-a2c12c6a" style="{{'background:'+valps[$orig].backgroundColor+';'}}" wx:for="{{val.l0}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                                <view class="txtname1 data-v-a2c12c6a">{{valps[$orig].funcationName}}</view>
+                                <view class="txtname2 data-v-a2c12c6a">
+                                    <text class="data-v-a2c12c6a" wx:if="{{valps[$orig].funcationType=='10017'||valps[$orig].funcationType=='10123'||valps[$orig].funcationType=='10124'}}">{{''+(valps[$orig].dataType==2?'风险较低':valps[$orig].dataType==1?'风险较高':'')+''}}</text>
+                                    <text class="data-v-a2c12c6a" wx:else>{{''+valps[$orig].value+''}}</text>
+                                    <text class="data-v-a2c12c6a" wx:if="{{valps.g2<5}}">{{valps[$orig].unit}}</text>
+                                </view>
+                                <view class="txtname3 data-v-a2c12c6a" style="{{'background:'+valps[$orig].leavesColor+';'}}" wx:if="{{valps[$orig].leavesDescribe}}">{{valps[$orig].leavesDescribe}}</view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

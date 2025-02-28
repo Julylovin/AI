@@ -1,0 +1,51 @@
+<view class="mypage">
+    <view class="mybeijing"></view>
+    <view class="mycont">
+        <view class="mytop">
+            <view style="width:100%;overflow:hidden;">
+                <view class="left" style="width:120rpx;float:left;height:100rpx;">
+                    <image alt class="mytopimg _img" src="{{picImg}}"></image>
+                </view>
+                <view class="right" style="width:calc(100% - 120rpx);padding-top:20rpx;float:left;height:100rpx;">
+                    <view style="float:left;" wx:if="{{islogin}}">
+                        <view bindtap="__e" class="btntxtx1 comtxtellipse1" data-event-opts="{{[ [ 'tap',[ [ 'xiugai',['$event'] ] ] ] ]}}">
+                            <text>{{userName?userName:''}}</text>
+                        </view>
+                        <view class="btntxtx2 comtxtellipse1">{{roleName?roleName:''}}</view>
+                    </view>
+                    <view style="float:left;" wx:if="{{!islogin}}">
+                        <view bindtap="__e" class="btntxtx1" data-event-opts="{{[ [ 'tap',[ [ 'toligin',['$event'] ] ] ] ]}}">
+                            <text>登录/注册</text>
+                        </view>
+                        <view class="btntxtx2">您还未登录</view>
+                    </view>
+                    <view bindtap="__e" class="right" data-event-opts="{{[ [ 'tap',[ [ 'xiugai',['$event'] ] ] ] ]}}" style="float:right;" wx:if="{{islogin}}">
+                        <view class="btntxtx3">修改资料</view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'newbaogao',['$event'] ] ] ] ]}}" style="width:100%;overflow:hidden;position:relative;height:300rpx;">
+                <image alt class="mypageimg _img" src="https://diag.wuzhengai.com/appimage/mypage1ps.png"></image>
+            </view>
+            <view class="newyiliao">
+                <view style="width:100%;overflow:hidden;position:relative;height:300rpx;display:flex;">
+                    <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'lishibaogao',['$event'] ] ] ] ]}}" style="float:left;position:relative;height:300rpx;margin-right:20rpx;flex:1;">
+                        <image alt class="mypageimg _img" src="https://diag.wuzhengai.com/appimage/mypage2ps.png"></image>
+                    </view>
+                    <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'mybaogao',['$event'] ] ] ] ]}}" style="float:left;position:relative;height:300rpx;flex:1;">
+                        <image alt class="mypageimg _img" src="https://diag.wuzhengai.com/appimage/mypage3ps.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="uni-margin-wrap imgbanner">
+            <swiper autoplay="{{false}}" circular="{{true}}" class="swiper" duration="{{duration}}" indicatorActiveColor="#3187DC" indicatorColor="#fff" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+                <swiper-item bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'handleBanner',['$0'],[ [ ['bannerList','id',val.id] ] ] ] ] ] ]}}" wx:for="{{bannerList}}" wx:for-item="val" wx:key="id">
+                    <view class="swiper-item">
+                        <image alt class="imgbanner _img" src="{{val.thumbnail}}"></image>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

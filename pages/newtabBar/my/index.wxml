@@ -1,0 +1,64 @@
+<view>
+    <view class="mybeijing"></view>
+    <view class="mycont">
+        <view class="mytop">
+            <image alt class="mytopimg _img" src="{{picImg}}"></image>
+            <view class="myname">
+                <view class="mynamein">{{userName?userName:'游客'}}</view>
+                <view class="mynameps">{{(deptName?deptName:'')+''}}<view class="mynamepscolor">{{''+(roleName?roleName:'')+''}}</view>
+                </view>
+            </view>
+            <button bindtap="__e" class="mybtn" data-event-opts="{{[ [ 'tap',[ [ 'xiugai',['$event'] ] ] ] ]}}">修改资料</button>
+        </view>
+        <view class="myrenwu">
+            <view class="myrenwuname">我的订单</view>
+            <view bindtap="__e" class="myrenwuli" data-event-opts="{{[ [ 'tap',[ [ 'renwu',['$event'] ] ] ] ]}}">
+                <image alt class="myrenwuliimg _img" src="https://diag.wuzhengai.com/image/jingxing.png"></image>
+                <view class="myrenwuliname">待支付</view>
+            </view>
+            <view bindtap="__e" class="myrenwuli" data-event-opts="{{[ [ 'tap',[ [ 'renwu',['$event'] ] ] ] ]}}">
+                <image alt class="myrenwuliimg _img" src="https://diag.wuzhengai.com/image/wancheng.png"></image>
+                <view class="myrenwuliname">已完成</view>
+            </view>
+            <view bindtap="__e" class="myrenwuliqu" data-event-opts="{{[ [ 'tap',[ [ 'renwu',['$event'] ] ] ] ]}}">
+                <image alt class="myrenwuliimg _img" src="https://diag.wuzhengai.com/image/guoqi.png"></image>
+                <view class="myrenwuliname">已取消</view>
+            </view>
+            <image alt class="myrenwuliimgdian _img" src="https://diag.wuzhengai.com/image/dian.png"></image>
+            <view bindtap="__e" class="myrenwuliqu" data-event-opts="{{[ [ 'tap',[ [ 'renwu',['$event'] ] ] ] ]}}">
+                <image alt class="myrenwuliimg _img" src="https://diag.wuzhengai.com/image/quanbu.png"></image>
+                <view class="myrenwuliname">申请售后</view>
+            </view>
+        </view>
+        <view class="myrenwu">
+            <view bindtap="__e" class="myshezhi" data-event-opts="{{[ [ 'tap',[ [ 'fankui',['$event'] ] ] ] ]}}">
+                <image alt class="myshezhiimg _img" src="https://diag.wuzhengai.com/image/yijian.png"></image>
+                <view class="myshezhiname">意见反馈</view>
+                <image alt class="myshezhiimgps _img" src="https://diag.wuzhengai.com/image/jiantou.png"></image>
+                <view class="myshezhibu"></view>
+            </view>
+            <view bindtap="__e" class="myshezhi" data-event-opts="{{[ [ 'tap',[ [ 'guanyu',['$event'] ] ] ] ]}}">
+                <image alt class="myshezhiimg _img" src="https://diag.wuzhengai.com/image/guanyu.png"></image>
+                <view class="myshezhiname">关于</view>
+                <image alt class="myshezhiimgps _img" src="https://diag.wuzhengai.com/image/jiantou.png"></image>
+                <view class="myshezhibu"></view>
+            </view>
+            <view bindtap="__e" class="myshezhi" data-event-opts="{{[ [ 'tap',[ [ 'kefu',['$event'] ] ] ] ]}}">
+                <image alt class="myshezhiimg _img" src="https://diag.wuzhengai.com/image/baojing.png"></image>
+                <view class="myshezhiname">联系客服</view>
+                <image alt class="myshezhiimgps _img" src="https://diag.wuzhengai.com/image/jiantou.png"></image>
+                <view class="myshezhibu"></view>
+            </view>
+            <view bindtap="__e" class="myshezhi" data-event-opts="{{[ [ 'tap',[ [ 'tuichu',['$event'] ] ] ] ]}}">
+                <image alt class="myshezhiimg _img" src="https://diag.wuzhengai.com/image/shezhi.png"></image>
+                <view class="myshezhiname">退出登陆</view>
+                <image alt class="myshezhiimgps _img" src="https://diag.wuzhengai.com/image/jiantou.png"></image>
+            </view>
+        </view>
+    </view>
+    <view>
+        <uni-popup bind:__l="__l" bind:maskClick="__e" class="vue-ref" data-event-opts="{{[ [ '^maskClick',[ ['maskClickin'] ] ] ]}}" data-ref="alertDialog" type="dialog" vueId="0c9c77a6-1" vueSlots="{{['default']}}">
+            <uni-popup-dialog bind:__l="__l" bind:close="__e" bind:confirm="__e" cancelText="在线客服" confirmText="拨打客服电话" content="请选择客服类型" data-event-opts="{{[ [ '^confirm',[ ['dialogConfirm'] ] ],[ '^close',[ ['dialogClose'] ] ] ]}}" title="提示" type="center" vueId="{{'0c9c77a6-2'+','+'0c9c77a6-1'}}"></uni-popup-dialog>
+        </uni-popup>
+    </view>
+</view>

@@ -1,0 +1,232 @@
+<view class="reportemobox">
+    <view class="reportemokuai" style="margin-bottom:40rpx;">
+        <view class="reportemoinfo" style="width:200rpx;">
+            <image alt class="reportemoinfoimg _img" src="{{msg.userInfo.picImg}}" style="width:150rpx;height:150rpx;border-radius:100rpx;"></image>
+        </view>
+        <view class="reportemoinfops" style="width:440rpx;">
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'姓名：'+msg.userInfo.userName}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'性别：'+(msg.userInfo.sex==1?'男':'女')}}</view>
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'年龄：'+msg.userInfo.age+'岁'}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'身高：'+msg.userInfo.userHeight+'cm'}}</view>
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'体重：'+msg.userInfo.userWeight+'KG'}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'出生日期：'+msg.userInfo.birthday}}</view>
+        </view>
+    </view>
+    <view class="reportemokuai" style="padding:0;margin-bottom:40rpx;">
+        <view class="reportemozong">
+            <view class="yiyureportemozongtop" style="height:102rpx;">
+                <image alt class="yiyuheadimg _img" src="https://diag.wuzhengai.com/appimage/yiyuheadimg.png"></image>
+                <view class="yiyureportemozongtopps" style="height:100rpx;">
+                    <view class="yiyuleft"></view>
+                    <view class="yiyuright" style="padding:20rpx 0rpx;">
+                        <view class="yiyupinli">
+                            <view style="{{'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{''+msgps.psychoMoodAnalyzeData.psychoGrade+''}}</view>
+                            <view class="yiyuh3">总评分</view>
+                        </view>
+                        <view class="yiyupinli">
+                            <view style="width:100%;">
+                                <text style="{{'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoRating}}</text>
+                            </view>
+                            <view class="yiyuh3">失眠程度</view>
+                        </view>
+                        <view class="yiyupinli">
+                            <view style="width:100%;">
+                                <text style="{{'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#1890FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#fbad3a':msgps.psychoMoodAnalyzeData.psychoScore==4?'#ef6c6b':'#74C045')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoTCMType?msgps.psychoMoodAnalyzeData.psychoTCMType:'--'}}</text>
+                            </view>
+                            <view class="yiyuh3">中医证型</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv" style="float:left;overflow:hidden;" wx:if="{{msgps.hrvHeartBrainData!=null}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">心率变异性综合趋势图</view>
+                    </view>
+                    <view style="height:200rpx;width:100%;float:left;background:#EEF8FF;">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhehrv}}" opts="{{optszhehrv}}" type="area" vueId="06196c64-1"></qiun-data-charts>
+                    </view>
+                </view>
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">心率变异性总趋势说明</view>
+                    </view>
+                    <view class="reportemozongps" wx:if="{{msgps.hrvHeartBrainData.sdnnTrendInfo}}">
+                        <view class="rppgreportdocsuncontpsinps">
+                            <view>{{msgps.hrvHeartBrainData.sdnnTrendInfo}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="pingjia reportemozongxinlv">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">失眠综合解读</view>
+                </view>
+                <view class="reportemozongps">
+                    <view wx:if="{{msgps.analyzeResultCarryColor}}">
+                        <view wx:for="{{msgps.analyzeResultCarryColor}}" wx:for-item="val" wx:key="index">
+                            <label class="_span" style="{{'color:'+(item.color==1?'#74C045':item.color==2?'#1890FF':item.color==3?'#F4D127':item.color==4?'#F4A627':item.color==5?'#EF5655':'#385C8B')+';'+'font-weight:'+(item.color==0?'400':'bold')+';'}}" wx:for="{{val.colorTextList}}" wx:for-index="index1" wx:key="index1">{{''+item.text+''}}</label>
+                        </view>
+                    </view>
+                    <view wx:if="{{!msgps.analyzeResultCarryColor}}">
+                        <view wx:for="{{msgps.analyzeResult}}" wx:for-item="val" wx:key="index">
+                            <rich-text nodes="{{val}}"></rich-text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="biaoge2_22 reportemozongxinlv" wx:if="{{msgps.psychoMoodAnalyzeData.psychoTCMType&&msgps.psychoMoodAnalyzeData.psychoScore!=1&&msgps.psychoMoodAnalyzeData.psychoScore!=2}}">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">失眠中医证型</view>
+                </view>
+                <view class="biaogetop2_22" style="height:140rpx;">
+                    <view class="biaogetopname2_22" style="font-size:32rpx;color:#385C8B;padding:12rpx 36rpx;width:120rpx;height:120rpx;">
+                        <view class="biaogetopname12_22" style="font-family:PingFangSC, PingFang SC;font-weight:600;line-height:45rpx;text-align:left;font-style:normal;">{{msgps.psychoMoodAnalyzeData.tcmTypeDataVO.typeName}}</view>
+                    </view>
+                    <view class="biaogetopnameps2_22" style="height:120rpx;">
+                        <view>{{'解读内容：'+msgps.psychoMoodAnalyzeData.tcmTypeDataVO.typeDesc}}</view>
+                    </view>
+                </view>
+                <view class="biaogelist2_22" style="height:180rpx;">
+                    <view class="biaogeli2_22" wx:for="{{msgps.psychoMoodAnalyzeData.tcmTypeDataVO.itemRiskFactorAnalysisDataList}}" wx:for-item="val1" wx:key="*this">
+                        <view class="biaogeliname2_22" style="border-bottom:1px solid #fff;">{{''+val1.funcationName+''}}</view>
+                        <view class="yiyubiaogethli">
+                            <view style="width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{''+val1.result+(val1.unit?val1.unit:'')+''}}</view>
+                            <view style="{{'color:'+(val.dateType==2?'':'#ef5655')+';'+'font-weight:'+'600'+';'}}">{{val.dateType==1?'↓':val.dateType==2?'正常':'↑'}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="pingjia" style="margin-left:0;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">失眠相关中医方剂</view>
+                    </view>
+                    <view class="reportemozongps">
+                        <view>{{''+msgps.psychoMoodAnalyzeData.tcmTypeDataVO.prescription+''}}</view>
+                    </view>
+                </view>
+                <view class="pingjia" style="margin-left:0;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">失眠相关中医药膳</view>
+                    </view>
+                    <view class="reportemozongps">
+                        <view>{{''+msgps.psychoMoodAnalyzeData.tcmTypeDataVO.medicinalDiet+''}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="reportemokuai" style="padding:0;margin-bottom:40rpx;background-color:#fff;">
+        <view class="reportemozongxinlv">
+            <view style="width:100%;float:left;" wx:for="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodAbilityList}}" wx:for-item="val" wx:key="index">
+                <view style="background-color:#fff;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">{{val.name}}</view>
+                </view>
+                <view class="reportemoyali">
+                    <view class="biaoge2_22">
+                        <view class="biaogetop2_22">
+                            <view class="biaogetopname2_22">
+                                <view class="biaogetopname12_22">{{val.name}}</view>
+                                <view class="biaogetopname22_22" style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'+'font-size:'+'32rpx'+';'}}">{{''+val.index+''}}</view>
+                                <view class="biaogetopname32_22" style="{{'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                    <text style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'}}">{{''+(val.score==1?'优秀':val.score==2?'良好':val.score==3?'一般':val.score==4?'较差':'优秀')}}</text>
+                                </view>
+                            </view>
+                            <view class="biaogetopnameps2_22" style="width:410rpx;">
+                                <view>{{'解读：'+(val.info?val.info:val.unscramble)}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view style="width:100%;float:left;" wx:for="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodAbilityList}}" wx:for-item="val" wx:key="index">
+                <view style="background-color:#fff;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">{{val.name}}</view>
+                </view>
+                <view class="reportemoyali">
+                    <view class="biaoge2_22">
+                        <view class="biaogetop2_22">
+                            <view class="biaogetopname2_22">
+                                <view class="biaogetopname12_22">{{val.name}}</view>
+                                <view class="biaogetopname22_22" style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#2D99FD':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'+'font-size:'+'32rpx'+';'}}">{{''+val.index+''}}</view>
+                                <view class="biaogetopname32_22" style="{{'color:'+(val.score==1?'#74C045':val.score==2?'#1890FF':val.score==3?'#fbad3a':val.score==4?'#ef6c6b':'#74C045')+';'+'font-size:'+'24rpx'+';'+'font-weight:'+'400'+';'}}">
+                                    <text wx:if="{{val.name=='焦虑'}}">{{''+(val.score==1?'无焦虑':val.score==2?'轻度焦虑':val.score==3?'中度焦虑':val.score==4?'重度焦虑':'无焦虑')+''}}</text>
+                                    <text wx:if="{{val.name=='抑郁'}}">{{''+(val.score==1?'无抑郁':val.score==2?'轻度抑郁':val.score==3?'中度抑郁':val.score==4?'重度抑郁':'无抑郁')+''}}</text>
+                                    <text wx:if="{{val.name=='压力'}}">{{''+(val.score==1?'无压力':val.score==2?'轻度压力':val.score==3?'中度压力':val.score==4?'重度压力':'无压力')+''}}</text>
+                                    <text wx:if="{{val.name=='失眠'}}">{{''+(val.score==1?'睡眠充足':val.score==2?'轻度失眠':val.score==3?'中度失眠':val.score==4?'重度失眠':'睡眠充足')+''}}</text>
+                                    <text wx:if="{{val.name=='疲劳'}}">{{''+(val.score==1?'精力充沛':val.score==2?'轻度疲劳':val.score==3?'中度疲劳':val.score==4?'重度疲劳':'精力充沛')+''}}</text>
+                                    <text wx:if="{{val.name=='易怒'}}">{{''+(val.score==1?'无易怒':val.score==2?'轻度易怒':val.score==3?'中度易怒':val.score==4?'重度易怒':'无易怒')+''}}</text>
+                                </view>
+                            </view>
+                            <view class="biaogetopnameps2_22" style="width:410rpx;">
+                                <view>{{'解读：'+(val.info?val.info:val.unscramble)}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="reportemokuai">
+            <view wx:if="{{msgps.psychoMoodAnalyzeData.behaviorAnalyzeVO.behaviorScore}}">
+                <view class="reportemofenxi">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname">睡眠状况分析</view>
+                </view>
+                <view class="reportemobanyuan">
+                    <view style="width:100%;text-align:center;position:relative;">
+                        <image class="yiyufengxainimg _img" src="{{'https://diag.wuzhengai.com/appimage/yiyubehavior'+msgps.psychoMoodAnalyzeData.behaviorAnalyzeVO.behaviorScore+'.png'}}"></image>
+                    </view>
+                </view>
+                <view class="pingjia" style="margin-left:0;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">行为分析解读</view>
+                    </view>
+                    <view class="reportemozongps">
+                        <view>{{''+msgps.psychoMoodAnalyzeData.behaviorAnalyzeVO.behaviorDes+''}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="pingjia" style="margin-left:0;margin-top:30rpx;">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">失眠健康风险趋势图</view>
+                </view>
+                <view class="reportemozongps" style="background:none;height:260rpx;">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatayiyu}}" opts="{{opts}}" type="line" vueId="06196c64-2"></qiun-data-charts>
+                </view>
+            </view>
+            <view class="pingjia" style="margin-left:0;margin-bottom:40rpx;">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">失眠健康风险解读</view>
+                </view>
+                <view class="reportemozongps">
+                    <view>
+                        <view wx:for="{{msgps.psychoMoodAnalyzeData.diseaseRiskData.diseaseRiskList}}" wx:for-item="val" wx:key="index">{{''+index+1+'.'+val.diseaseName+'：'+val.diseaseDesc}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="pingjia" style="margin-left:0;margin-bottom:0rpx;margin-top:0;">
+                <view class="reportemofenxi" style="background:none;">
+                    <view class="reportemofenxileft"></view>
+                    <view class="reportemofenxiname" style="font-size:30rpx;">相关文献及专利</view>
+                </view>
+                <view class="reportemozongps">
+                    <view>
+                        <view wx:for="{{msgps.psychoMoodAnalyzeData.literaturePatentList}}" wx:for-item="val" wx:key="index">{{''+val.name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

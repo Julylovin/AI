@@ -1,0 +1,187 @@
+<view class="reportemobox indexemotion reportlinda">
+    <view class="reportemokuai">
+        <view class="reportemoinfo" style="width:200rpx;">
+            <image alt class="reportemoinfoimg _img" src="{{msg.userInfo.picImg}}" style="width:150rpx;height:150rpx;border-radius:100rpx;"></image>
+        </view>
+        <view class="reportemoinfops" style="width:440rpx;">
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'姓名：'+msg.userInfo.userName}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'性别：'+(msg.userInfo.sex==1?'男':'女')}}</view>
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'年龄：'+msg.userInfo.age+'岁'}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'身高：'+msg.userInfo.userHeight+'cm'}}</view>
+            <view class="reportemoinfopsli" style="width:37%;margin-right:3%;">{{'体重：'+msg.userInfo.userWeight+'KG'}}</view>
+            <view class="reportemoinfopsli" style="width:60%;">{{'出生日期：'+msg.userInfo.birthday}}</view>
+        </view>
+    </view>
+    <view class="reportemokuai" style="padding:0;" wx:if="{{!kongoff}}">
+        <view class="reportemozong">
+            <view class="reportemozongtop">
+                <image alt class="zongtopimg _img" src="https://diag.wuzhengai.com/rppgimages/emotion1.png"></image>
+                <view class="reportemozongtopps">
+                    <view class="zongnum">
+                        <text style="float:left;">{{msgps.psychoMoodAnalyzeData.psychoGrade}}</text>
+                        <text style="margin-top:10rpx;width:300rpx;padding-left:30rpx;font-size:44rpx;">
+                            <text style="{{'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoRating}}</text>
+                            <text style="{{'font-size:'+'40rpx'+';'+'margin-left:'+'8rpx'+';'+'color:'+(msgps.psychoMoodAnalyzeData.psychoScore==1?'#74C045':msgps.psychoMoodAnalyzeData.psychoScore==2?'#0E77FF':msgps.psychoMoodAnalyzeData.psychoScore==3?'#F4D127':msgps.psychoMoodAnalyzeData.psychoScore==4?'#F4A627':msgps.psychoMoodAnalyzeData.psychoScore==5?'#EF5655':'#3A8542')+';'}}">{{msgps.psychoMoodAnalyzeData.psychoScore==1?'优秀':msgps.psychoMoodAnalyzeData.psychoScore==2?'良好':msgps.psychoMoodAnalyzeData.psychoScore==3?'一般':msgps.psychoMoodAnalyzeData.psychoScore==4?'较差':''}}</text>
+                        </text>
+                    </view>
+                    <view class="zongname">
+                        <view>心理综合评分</view>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv">
+                <view class="reportemofenxiname" style="font-size:28rpx;white-space:wrap;height:auto;">注：综合评定结果由负面情绪、正面情绪、心理能力综合计算。</view>
+                <view class="baicont" style="font-size:28rpx;margin-bottom:20rpx;">
+                    <view class="baicontli">
+                        <view class="title">负面情绪</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade?msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+';'}}">{{''+(negativeMoodDataList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]?negativeMoodDataList[msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'')+''}}</view>
+                    </view>
+                    <view class="baicontli">
+                        <view class="title">正面情绪</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade?msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+';'}}">{{''+(positiveMoodDataList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]?positiveMoodDataList[msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'')+''}}</view>
+                    </view>
+                    <view class="baicontli">
+                        <view class="title">心理能力</view>
+                        <view class="score" style="{{'color:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+';'}}">{{''+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade?msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade:'')+''}}<text class="init">分</text>
+                        </view>
+                        <view class="tag" style="{{'background:'+(rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?rppgcolorList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+';'}}">{{''+(moodAbilityDataList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]?moodAbilityDataList[msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'')+''}}</view>
+                    </view>
+                </view>
+                <view style="float:left;margin-bottom:20rpx;width:100%;">
+                    <view style="float:left;">
+                        <image alt="分项指标" class="_img" src="https://diag.wuzhengai.com/appimage/indexemotionfenxian.png" style="width:64rpx;height:64rpx;"></image>
+                    </view>
+                    <view class="reportemofenxiname">分项指标</view>
+                </view>
+                <view style="float:left;margin-bottom:20rpx;width:100%;">
+                    <view class="baizbli">
+                        <view class="title">负面情绪</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodAbilityList}}" wx:key="index">{{''+(item.name?item.name:'')}}</view>
+                        </scroll-view>
+                    </view>
+                    <view class="baizbli">
+                        <view class="title">正面情绪</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodAbilityList}}" wx:key="index">{{''+(item.name?item.name:'')}}</view>
+                        </scroll-view>
+                    </view>
+                    <view class="baizbli">
+                        <view class="title">心理能力</view>
+                        <scroll-view class="zblist" scrollLeft="120" scrollX="true">
+                            <view class="tag" style="{{'background:'+(rppgcolorList[item.score]?rppgcolorList[item.score]:'')+';'}}" wx:for="{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodAbilityList}}" wx:key="index">{{''+(item.name?item.name:'')}}</view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="__e" class="btnchakan" data-event-opts="{{[ [ 'tap',[ ['chakanlinda'] ] ] ]}}" wx:if="{{!kongoff}}">查看报告</view>
+    </view>
+    <view class="reportemokuai" wx:if="{{!kongoff}}">
+        <view class="reportfenxi" style="margin-top:30rpx;">
+            <view class="reportfenxileft"></view>
+            <view class="reportfenxiname">与上次检测对比变化</view>
+        </view>
+        <view class="reportfenxiyinzi" wx:if="{{$root.g0>0}}">
+            <view class="reportfenxiyinzitop">
+                <view class="reportfenxiyinzitop1" style="width:25%;">测量指标</view>
+                <view class="reportfenxiyinzitop2" style="width:25%;">上次</view>
+                <view class="reportfenxiyinzitop2s" style="width:25%;">本次</view>
+                <view class="reportfenxiyinzitop4" style="width:25%;">结果</view>
+            </view>
+            <view class="reportfenxiyinzili" wx:for="{{userreportdata.dataList1}}" wx:for-item="val" wx:key="index">
+                <view class="reportfenxiyinzili1" style="width:25%;">{{val.name}}</view>
+                <view class="reportfenxiyinzili2" style="{{'width:25%;'+'color:'+(val.lastDataColor?val.lastDataColor:'#385C8B')+';'}}">{{''+(val.lastData?val.lastData:'--')}}</view>
+                <view class="reportfenxiyinzili2s" style="{{'width:25%;'+'color:'+(val.dataColor?val.dataColor:'#385C8B')+';'}}">{{val.data?val.data:'--'}}</view>
+                <view class="reportfenxiyinzili3" style="width:25%;">{{''+(val.dataTypeName?val.dataTypeName:'--')+''}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="reportemokuai" wx:if="{{!kongoff}}">
+        <view class="reportfenxi" style="margin-top:30rpx;">
+            <view class="reportfenxileft"></view>
+            <view class="reportfenxiname">指标异常次数</view>
+        </view>
+        <view class="reportfenxiyinzi" wx:if="{{$root.g1>0}}">
+            <view class="reportfenxiyinzitop">
+                <view class="reportfenxiyinzitop1" style="width:25%;">负面情绪</view>
+                <view class="reportfenxiyinzitop2" style="width:25%;">周</view>
+                <view class="reportfenxiyinzitop2s" style="width:25%;">月</view>
+                <view class="reportfenxiyinzitop4" style="width:25%;">季</view>
+            </view>
+            <view class="reportfenxiyinzili" wx:for="{{userreportdata.dataList2}}" wx:for-index="index2" wx:for-item="val" wx:key="index2">
+                <view class="reportfenxiyinzili1" style="width:25%;">{{val.name}}</view>
+                <view class="reportfenxiyinzili2" style="width:25%;">{{val.data1?val.data1+'次':'0次'}}</view>
+                <view class="reportfenxiyinzili2s" style="width:25%;">{{val.data2?val.data2+'次':'0次'}}</view>
+                <view class="reportfenxiyinzili3" style="width:25%;">{{''+(val.data3?val.data3+'次':'0次')}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="reportemokuai" wx:if="{{!kongoff}}">
+        <view style="width:100%;float:left;">
+            <view class="reportemofenxi" style="background:none;">
+                <view class="reportemofenxileft"></view>
+                <view class="reportemofenxiname" style="font-size:30rpx;">指标异常次数</view>
+            </view>
+            <view class="reportemozongxinlv echartbox" style="float:left;overflow:hidden;margin-left:0;" wx:if="{{$root.g2>0}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">{{chartDataList[0].name}}</view>
+                    </view>
+                    <view class="echartclass">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhe0}}" opts="{{optszhehrv1}}" type="area" vueId="51c53fbc-1"></qiun-data-charts>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv echartbox" style="float:left;overflow:hidden;margin-left:0;" wx:if="{{$root.g3>0}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">{{chartDataList[1].name}}</view>
+                    </view>
+                    <view class="echartclass">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhe1}}" opts="{{optszhehrv1}}" type="area" vueId="51c53fbc-2"></qiun-data-charts>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv echartbox" style="float:left;overflow:hidden;margin-left:0;" wx:if="{{$root.g4>0}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">{{chartDataList[2].name}}</view>
+                    </view>
+                    <view class="echartclass">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhe2}}" opts="{{optszhehrv1}}" type="area" vueId="51c53fbc-3"></qiun-data-charts>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv echartbox" style="float:left;overflow:hidden;margin-left:0;" wx:if="{{$root.g5>0}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">{{chartDataList[3].name}}</view>
+                    </view>
+                    <view class="echartclass">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhe3}}" opts="{{optszhehrv1}}" type="area" vueId="51c53fbc-4"></qiun-data-charts>
+                    </view>
+                </view>
+            </view>
+            <view class="reportemozongxinlv echartbox" style="float:left;overflow:hidden;margin-left:0;" wx:if="{{$root.g6>0}}">
+                <view style="width:100%;float:left;">
+                    <view class="reportemofenxi" style="background:none;">
+                        <view class="reportemofenxileft"></view>
+                        <view class="reportemofenxiname" style="font-size:30rpx;">{{chartDataList[4].name}}</view>
+                    </view>
+                    <view class="echartclass">
+                        <qiun-data-charts bind:__l="__l" chartData="{{chartDatazhe4}}" opts="{{optszhehrv1}}" type="area" vueId="51c53fbc-5"></qiun-data-charts>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

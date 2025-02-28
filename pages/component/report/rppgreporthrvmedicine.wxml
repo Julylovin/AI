@@ -1,0 +1,245 @@
+<view class="hrvmedicinelity">
+    <view class="hrvmedicinelitycont">
+        <view class="hrvmedicinelitytop">
+            <image alt class="hrvmedicinelitytopimg _img" src="{{msg.userInfo.faceImg}}"></image>
+            <view class="hrvmedicinelitytopname">{{msg.userInfo.userName}}</view>
+            <view style="width:500rpx;color:#889DB9;font-size:20rpx;margin-top:10rpx;margin-left:16rpx;float:left;">本报告所展示的分析结果仅代表即时数据，并非专业非接触检测数据报告，仅供参考。</view>
+        </view>
+        <view class="hrvmedicinelitytopge">
+            <view class="hrvmedicinelitytopgecont">
+                <image alt class="hrvmedicinelitytopgecontimg _img" src="https://diag.wuzhengai.com/appimage/yiyuheadimg.png"></image>
+                <view class="hrvmedicinelitytopgecontname">您的基本体质</view>
+                <view class="hrvmedicinelitytopgecontname">兼有体质</view>
+                <view class="hrvmedicinelitytopgecontnameps">{{msgps.tcmBodyDataVO.baseBody}}</view>
+                <view class="hrvmedicinelitytopgecontnameps">{{msgps.tcmBodyDataVO.bothBody}}</view>
+                <view class="hrvmedicinelitytopgeconttype shenglue">
+                    <text wx:for="{{msgps.tcmBodyDataVO.featureList}}" wx:for-item="val" wx:key="index">{{val+''}}<text wx:if="{{index<$root.g0-1}}">、</text>
+                    </text>
+                </view>
+                <view class="hrvmedicinelitytopgeconthua">{{''+msgps.tcmBodyDataVO.conclusion+''}}</view>
+            </view>
+        </view>
+        <view class="hrvmedicinelitykuang">
+            <view class="hrvmedicinelitykuangtop">
+                <view class="hrvmedicinelitykuangtopspan"></view>
+                <view class="hrvmedicinelitykuangtopname">HRV与中医体质</view>
+            </view>
+            <view class="hrvmedicinelityxl">
+                <view class="hrvmedicinelitykuangtop" style="background:none;">
+                    <view class="hrvmedicinelitykuangtopspan"></view>
+                    <view class="hrvmedicinelitykuangtopname" style="font-size:30rpx;">心率变异性趋势图</view>
+                </view>
+                <view class="hrvmedicinelityxltu">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatazx}}" class="charts1" ontouch="{{true}}" opts="{{optszx}}" type="area" vueId="050596ce-1"></qiun-data-charts>
+                </view>
+                <view class="hrvmedicinelityhrvlist">
+                    <view class="hrvmedicinelityhrvli">
+                        <view class="hrvmedicinelityhrvlitop">
+                            <view class="hrvmedicinelityhrvlitopname">心率</view>
+                            <view class="hrvmedicinelityhrvlitopspanps"></view>
+                        </view>
+                        <view class="hrvmedicinelityhrvlicont">
+                            <view class="hrvmedicinelityhrvlicontnum">{{msgps.tcmBodyDataVO.heart}}</view>
+                            <view class="hrvmedicinelityhrvlicontunit">bpm</view>
+                        </view>
+                    </view>
+                    <view class="hrvmedicinelityhrvli">
+                        <view class="hrvmedicinelityhrvlitop">
+                            <view class="hrvmedicinelityhrvlitopname">BMI</view>
+                            <view class="hrvmedicinelityhrvlitopspanps"></view>
+                        </view>
+                        <view class="hrvmedicinelityhrvlicont">
+                            <view class="hrvmedicinelityhrvlicontnum">{{msgps.tcmBodyDataVO.bmi}}</view>
+                            <view class="hrvmedicinelityhrvlicontunit"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="hrvmedicinelityxl">
+                <view class="hrvmedicinelityxllist">
+                    <scroll-view class="navscroll" scrollX="{{true}}">
+                        <view class="hrvmedicinelityxlli">
+                            <view class="hrvmedicinelityxlliname">体质类型</view>
+                            <view class="hrvmedicinelityxllinum">{{msgps.tcmBodyDataVO.baseBody}}</view>
+                        </view>
+                        <view class="hrvmedicinelityxlli" wx:for="{{msgps.riskFactorAnalysisDataList}}" wx:for-item="val" wx:key="index">
+                            <view class="hrvmedicinelityxlliname">{{val.funcationName}}</view>
+                            <view class="hrvmedicinelityxllinum">{{val.result+val.unit}}</view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+        <view class="hrvmedicinelitykuang">
+            <view class="hrvmedicinelitykuangtop">
+                <view class="hrvmedicinelitykuangtopspan"></view>
+                <view class="hrvmedicinelitykuangtopname">中医九大体质辨识</view>
+            </view>
+            <view class="hrvmedicinelityxl" style="padding:0 20rpx;box-sizing:border-box;">
+                <view class="hrvmedicinelityxltu">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatazz}}" class="charts1" ontouch="{{true}}" opts="{{optszz}}" type="column" vueId="050596ce-2"></qiun-data-charts>
+                </view>
+                <view class="hrvmedicinelityhrvlistkuang">
+                    <view class="hrvmedicinelityhrvlicontps">
+                        <label class="_span" wx:for="{{msgps.tcmBodyDataVO.baseBothBodyInfoList}}" wx:for-item="val" wx:key="index">{{val}}</label>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="hrvmedicinelitykuang">
+            <view class="hrvmedicinelitykuangtop">
+                <view class="hrvmedicinelitykuangtopspan"></view>
+                <view class="hrvmedicinelitykuangtopname">基本体质</view>
+            </view>
+            <view style="width:100%;float:left;padding:0 20rpx;box-sizing:border-box;">
+                <view class="hrvmedicinelityhrvlist" style="margin-bottom:0;">
+                    <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                        <view class="hrvmedicinelityhrvlitopname">基本体质解读</view>
+                        <view class="hrvmedicinelityhrvlitopspan"></view>
+                    </view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{''+msgps.tcmBodyDataVO.baseInterpretation}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">常见表现</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.baseCommonManifestations}}</view>
+                <view style="width:100%;float:left;" wx:for="{{msgps.tcmBodyDataVO.baseBodyAnalysis}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                        <view class="hrvmedicinelityhrvlitopname">{{val.name}}</view>
+                        <view class="hrvmedicinelityhrvlitopspan"></view>
+                    </view>
+                    <view class="hrvmedicinelityhrvlicontps">{{val.value}}</view>
+                </view>
+                <view class="hrvmedicinelitykuangtop" style="background:none;margin-top:20rpx;">
+                    <view class="hrvmedicinelitykuangtopspan" style="margin-left:0;"></view>
+                    <view class="hrvmedicinelitykuangtopname">调养方式</view>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">保健原则</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.healthProtection}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">四季养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{msgps.tcmBodyDataVO.baseBodySeasonList}}" wx:for-item="val" wx:key="index">
+                        <view class="span">{{val.name+'：'}}</view>{{val.value+''}}</view>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:0;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">养生穴位</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityxl" style="padding:20rpx;box-sizing:border-box;" wx:for="{{msgps.tcmBodyDataVO.baseBodyAcupointsList}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{val.info}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                    <image alt class="hrvmedicinelitchayinimg _img" src="{{val.img}}"></image>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:0;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">茶饮养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityxl" style="padding:20rpx;box-sizing:border-box;" wx:for="{{msgps.tcmBodyDataVO.baseBodyTeaList}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{val.info}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                    <image alt class="hrvmedicinelitchayinimg _img" src="{{val.img}}"></image>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">精神养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.spiritForHealth}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">调理手段</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view style="width:100%;float:left;padding:0;box-sizing:border-box;">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{msgps.tcmBodyDataVO.regulationMethodsList}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="hrvmedicinelitykuang">
+            <view class="hrvmedicinelitykuangtop">
+                <view class="hrvmedicinelitykuangtopspan"></view>
+                <view class="hrvmedicinelitykuangtopname">兼有体质</view>
+            </view>
+            <view style="width:100%;float:left;padding:0 20rpx;box-sizing:border-box;">
+                <view class="hrvmedicinelityhrvlist" style="margin-bottom:0;">
+                    <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                        <view class="hrvmedicinelityhrvlitopname">兼有体质解读</view>
+                        <view class="hrvmedicinelityhrvlitopspan"></view>
+                    </view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.bothInterpretation}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">常见表现</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.bothCommonManifestations}}</view>
+                <view style="width:100%;float:left;" wx:for="{{msgps.tcmBodyDataVO.bothBodyAnalysis}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                        <view class="hrvmedicinelityhrvlitopname">{{val.name}}</view>
+                        <view class="hrvmedicinelityhrvlitopspan"></view>
+                    </view>
+                    <view class="hrvmedicinelityhrvlicontps">{{val.value}}</view>
+                </view>
+                <view class="hrvmedicinelitykuangtop" style="background:none;margin-top:20rpx;">
+                    <view class="hrvmedicinelitykuangtopspan" style="margin-left:0;"></view>
+                    <view class="hrvmedicinelitykuangtopname">调养方式</view>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">保健原则</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.bothBodyHealthProtection}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">四季养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{msgps.tcmBodyDataVO.bothBodySeasonList}}" wx:for-item="val" wx:key="index">
+                        <view class="span">{{val.name+'：'}}</view>{{val.value+''}}</view>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:0;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">养生穴位</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityxl" style="padding:20rpx;box-sizing:border-box;" wx:for="{{msgps.tcmBodyDataVO.bothBodyAcupointsList}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{val.info}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                    <image alt class="hrvmedicinelitchayinimg _img" src="{{val.img}}"></image>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:0;margin-top:30rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">茶饮养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityxl" style="padding:20rpx;box-sizing:border-box;" wx:for="{{msgps.tcmBodyDataVO.bothBodyTeaList}}" wx:for-item="val" wx:key="index">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{val.info}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                    <image alt class="hrvmedicinelitchayinimg _img" src="{{val.img}}"></image>
+                </view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">精神养生</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view class="hrvmedicinelityhrvlicontps">{{msgps.tcmBodyDataVO.bothBodyHealthProtection}}</view>
+                <view class="hrvmedicinelityhrvlitop" style="margin-bottom:10rpx;margin-top:20rpx;">
+                    <view class="hrvmedicinelityhrvlitopname">调理手段</view>
+                    <view class="hrvmedicinelityhrvlitopspan"></view>
+                </view>
+                <view style="width:100%;float:left;padding:0;box-sizing:border-box;">
+                    <view class="hrvmedicinelitchayinname" wx:for="{{msgps.tcmBodyDataVO.bothBodyRegulationMethodsList}}" wx:for-index="indexps" wx:for-item="valps" wx:key="indexps">
+                        <view class="span">{{valps.name+'：'}}</view>{{valps.value+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="hrvmedicinelitykuang">
+            <view style="width:100%;float:left;padding:0;box-sizing:border-box;">
+                <view class="hrvmedicinelitchayinname" style="font-size:18rpx;margin-top:20rpx;line-height:26rpx;">{{msgps.tcmBodyDataVO.warmTips+''}}</view>
+            </view>
+        </view>
+    </view>
+</view>

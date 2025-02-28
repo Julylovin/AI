@@ -1,0 +1,252 @@
+<view class="personality">
+    <view class="personalitycont">
+        <view class="personalitytop">
+            <image alt class="personalitytopimg _img" src="{{msg.userInfo.faceImg}}"></image>
+            <view class="personalitytopname">{{msg.userInfo.userName}}</view>
+            <view class="personalitytoplist">
+                <view class="personalitytopli" style="width:180rpx;">
+                    <view class="personalitytopliname shenglue">{{'姓名：'+msg.userInfo.userName}}</view>
+                    <view class="personalitytopliname">{{'年龄：'+msg.userInfo.age+'岁'}}</view>
+                </view>
+                <view class="personalitytopli" style="width:180rpx;">
+                    <view class="personalitytopliname">{{'性别：'+(msg.userInfo.sex==1?'男':'女')}}</view>
+                    <view class="personalitytopliname">{{'身高：'+msg.userInfo.userHeight+'cm'}}</view>
+                </view>
+                <view class="personalitytopli" style="width:280rpx;">
+                    <view class="personalitytopliname">{{'体重：'+msg.userInfo.userWeight+'KG'}}</view>
+                    <view class="personalitytopliname">{{'出生日期：'+msg.userInfo.birthday}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="personalitytopge">
+            <view class="personalitytopgecont">
+                <image alt class="personalitytopgecontimg _img" src="https://diag.wuzhengai.com/appimage/yiyuheadimg.png"></image>
+                <view class="personalitytopgecontname">您的人格类型</view>
+                <view class="personalitytopgecontnameps">{{bigFivePersonalityData.personalityMbti+'  ( '+bigFivePersonalityData.personality+' )'}}</view>
+                <view class="personalitytopgeconttype shenglue">{{bigFivePersonalityData.featureWords?bigFivePersonalityData.featureWords:'--'}}</view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">您的情绪</view>
+            </view>
+            <view class="personalityqxps">{{bigFivePersonalityData.moodDescribe}}</view>
+            <view class="personalityzhilist">
+                <view class="personalityzhili">
+                    <view class="personalityzhiliname">
+                        <image alt class="personalityzhilinameimg _img" src="{{$root.m0}}"></image>
+                        <view class="personalityzhilinameps">负面情绪评分</view>
+                    </view>
+                    <view class="personalityzhilinum">
+                        <view class="personalityzhilinumps">{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade+'分'}}</view>
+                        <view class="personalityzhilinumtype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==2?'#2D99FD':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==3?'#fbad3a':msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore==4?'#ef6c6b':'#74C045')+';'}}">{{msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore?['较低','较低','偏高','较高','过高'][msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore]:'较低'}}</view>
+                    </view>
+                </view>
+                <view class="personalityzhili">
+                    <view class="personalityzhiliname">
+                        <image alt class="personalityzhilinameimg _img" src="{{$root.m1}}"></image>
+                        <view class="personalityzhilinameps">正面情绪评分</view>
+                    </view>
+                    <view class="personalityzhilinum">
+                        <view class="personalityzhilinumps">{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade+'分'}}</view>
+                        <view class="personalityzhilinumtype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==2?'#2D99FD':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==3?'#fbad3a':msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore==4?'#ef6c6b':'#74C045')+';'}}">{{msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore?['充足','充足','较高','较低','过低'][msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore]:'充足'}}</view>
+                    </view>
+                </view>
+                <view class="personalityzhili">
+                    <view class="personalityzhiliname">
+                        <image alt class="personalityzhilinameimg _img" src="{{$root.m2}}"></image>
+                        <view class="personalityzhilinameps">心理能力评分</view>
+                    </view>
+                    <view class="personalityzhilinum">
+                        <view class="personalityzhilinumps">{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade+'分'}}</view>
+                        <view class="personalityzhilinumtype" style="{{'color:'+(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==1?'#74C045':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==2?'#2D99FD':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==3?'#fbad3a':msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore==4?'#ef6c6b':'#74C045')+';'}}">{{msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore?['优秀','优秀','良好','一般','较差'][msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore]:'优秀'}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="personalityxl">
+                <view class="personalitykuangtop">
+                    <view class="personalitykuangtopspan"></view>
+                    <view class="personalitykuangtopname">心率变异性趋势图</view>
+                </view>
+                <view class="personalityxltu">
+                    <qiun-data-charts bind:__l="__l" chartData="{{chartDatazx}}" class="charts1" ontouch="{{true}}" opts="{{optszx}}" type="area" vueId="c9f643de-1"></qiun-data-charts>
+                </view>
+            </view>
+            <view class="personalityqingxu">
+                <view class="personalitykuangtop">
+                    <view class="personalitykuangtopspan"></view>
+                    <view class="personalitykuangtopname">负面情绪</view>
+                </view>
+                <view class="personalityqingxulist">
+                    <view class="personalityqingxuli" wx:for="{{$root.l1}}" wx:for-item="val" wx:key="index">
+                        <view class="personalityqingxuliname">
+                            <view class="personalityqingxulinameps">{{val[$orig].name}}</view>
+                        </view>
+                        <view class="personalityqingxulilist">
+                            <view class="personalityqingxulili" style="{{'background:'+(val[$orig].score==index1+1?'linear-gradient( 90deg,'+val1.m3+'  0%, '+val1[$orig].color+' 100%)':'none')+';'+'width:'+100/val.g0+'%'+';'}}" wx:for="{{val.l0}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">{{val1[$orig].name}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="personalityqingxu">
+                <view class="personalitykuangtop">
+                    <view class="personalitykuangtopspan"></view>
+                    <view class="personalitykuangtopname">正面情绪</view>
+                </view>
+                <view class="personalityqingxulist">
+                    <view class="personalityqingxuli" wx:for="{{$root.l3}}" wx:for-item="val" wx:key="index">
+                        <view class="personalityqingxuliname">
+                            <view class="personalityqingxulinameps">{{val[$orig].name}}</view>
+                        </view>
+                        <view class="personalityqingxulilist">
+                            <view class="personalityqingxulili" style="{{'background:'+(val[$orig].score==index1+1?'linear-gradient( 90deg,'+val1.m4+'  0%, '+val1[$orig].color+' 100%)':'none')+';'+'width:'+100/val.g1+'%'+';'}}" wx:for="{{val.l2}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">{{val1[$orig].name}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="personalityqingxu">
+                <view class="personalitykuangtop">
+                    <view class="personalitykuangtopspan"></view>
+                    <view class="personalitykuangtopname">心理能力</view>
+                </view>
+                <view class="personalityqingxulist">
+                    <view class="personalityqingxuli" wx:for="{{$root.l5}}" wx:for-item="val" wx:key="index">
+                        <view class="personalityqingxuliname">
+                            <view class="personalityqingxulinameps">{{val[$orig].name}}</view>
+                        </view>
+                        <view class="personalityqingxulilist">
+                            <view class="personalityqingxulili" style="{{'background:'+(val[$orig].score==index1+1?'linear-gradient( 90deg,'+val1.m5+'  0%, '+val1[$orig].color+' 100%)':'none')+';'+'width:'+100/val.g2+'%'+';'}}" wx:for="{{val.l4}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">{{val1[$orig].name}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">您的五因素模型</view>
+            </view>
+            <view class="personalitymoxingps">{{bigFivePersonalityData.bigFivePersonalityModelExplain}}</view>
+            <view class="personalitymoxingtu">
+                <qiun-data-charts bind:__l="__l" chartData="{{chartDatald}}" class="charts1" ontouch="{{true}}" opts="{{optsld}}" tooltipFormat="tooltipTemp1" type="radar" vueId="c9f643de-2"></qiun-data-charts>
+            </view>
+            <view class="personalitymoxingpf">
+                <view class="personalitymoxingpfname">五因素模型评分</view>
+                <view class="personalitymoxingpflist">
+                    <view class="personalitymoxingpfli" wx:for="{{bigFivePersonalityData.bigFivePersonalityLabelVOList}}" wx:for-item="val" wx:key="index">
+                        <view class="personalitymoxingpfliimg"></view>
+                        <view class="personalitymoxingpfliname">
+                            <view class="personalitymoxingpflinameps">{{val.name}}</view>
+                            <view class="personalitymoxingpflinum">{{val.index}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="personalitymoxingps">{{bigFivePersonalityData.bigFivePersonalityResultExplain}}</view>
+            </view>
+            <view class="personalitymoxingpfgdlist">
+                <view class="personalitymoxingpfgdli" style="{{'border-color:'+val[$orig].color+';'}}" wx:for="{{$root.l6}}" wx:for-item="val" wx:key="index">
+                    <view class="personalitymoxingpfname">{{val[$orig].name}}</view>
+                    <view class="personalitymoxingpfgdlilist">
+                        <view class="personalitymoxingpfgdlili" style="{{'color:'+val[$orig].color+';'+'background:'+val.m6+';'}}" wx:for="{{val[$orig].featureWords}}" wx:for-index="index1" wx:for-item="val1" wx:key="index1">{{val1}}</view>
+                    </view>
+                    <view class="personalitymoxingpfgdlitiao" style="{{'background:'+val.m7+';'}}">
+                        <view class="personalitymoxingpfgdlitiaotop">
+                            <view class="personalitymoxingpfgdlitiaotopname" style="{{'color:'+val[$orig].color+';'}}">{{val[$orig].name+'概率'}}</view>
+                            <view class="personalitymoxingpfgdlitiaotopnum">{{val[$orig].index}}</view>
+                            <view class="personalitymoxingpfgdlitiaotopunit">%</view>
+                        </view>
+                        <view class="personalitymoxingpfgdlitiaoin">
+                            <view class="personalitymoxingpfgdlitiaointiao" style="{{'background:'+'linear-gradient( 270deg,'+val[$orig].color+' 0%, '+val.m8+' 100%)'+';'}}">
+                                <view class="personalitymoxingpfgdlitiaointiaoname">{{val[$orig].referenceRange}}</view>
+                            </view>
+                            <view class="personalitymoxingpfgdlitiaoindian" style="{{'left:'+val[$orig].index+'%'+';'+'background:'+val[$orig].color+';'}}"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">他人眼中的你</view>
+            </view>
+            <view class="personalityciyun">
+                <qiun-data-charts bind:__l="__l" chartData="{{chartDatacy}}" class="charts1" ontouch="{{true}}" opts="{{optscy}}" tooltipFormat="tooltipTemp1" type="word" vueId="c9f643de-3"></qiun-data-charts>
+            </view>
+            <view class="personalityciyunps" wx:for="{{bigFivePersonalityData.manifestationList}}" wx:for-item="val" wx:key="index">{{val}}</view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">{{bigFivePersonalityData.personality+'人口分布'}}</view>
+            </view>
+            <view class="personalitybiaoyan">
+                <view class="personalitybiaoyanlist">
+                    <view class="personalitybiaoyanli">
+                        <view class="personalitybiaoyanliname">总人口比例</view>
+                        <view class="personalitybiaoyanlinum">
+                            <view class="personalitybiaoyanlinumps">{{bigFivePersonalityData.totalProportion+'%'}}</view>
+                        </view>
+                    </view>
+                    <view class="personalitybiaoyanli">
+                        <view class="personalitybiaoyanliname">男性比例</view>
+                        <view class="personalitybiaoyanlinum">
+                            <view class="personalitybiaoyanlinumps">{{bigFivePersonalityData.manProportion+'%'}}</view>
+                        </view>
+                    </view>
+                    <view class="personalitybiaoyanli">
+                        <view class="personalitybiaoyanliname">女性比例</view>
+                        <view class="personalitybiaoyanlinum">
+                            <view class="personalitybiaoyanlinumps">{{bigFivePersonalityData.womanProportion+'%'}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">您适合从事的工作</view>
+            </view>
+            <view class="personalitygongzuo">{{bigFivePersonalityData.profession}}</view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">认识自己</view>
+            </view>
+            <view class="personalityziji">
+                <image alt class="personalityzijiimg _img" src="https://diag.wuzhengai.com/appimage/personality2.png"></image>
+                <view class="personalityzijileft">
+                    <view wx:for="{{bigFivePersonalityData.suggestionList}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                </view>
+                <view class="personalityzijiright">
+                    <view wx:for="{{bigFivePersonalityData.shortcomingList}}" wx:for-item="val" wx:key="index">{{val}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">交友婚配</view>
+            </view>
+            <view class="personalitygongzuo">
+                <view wx:for="{{bigFivePersonalityData.friendsMarriedList}}" wx:for-item="val" wx:key="index">{{val}}</view>
+            </view>
+        </view>
+        <view class="personalitykuang">
+            <view class="personalitykuangtop">
+                <view class="personalitykuangtopspan"></view>
+                <view class="personalitykuangtopname">相关名人</view>
+            </view>
+            <view class="personalitymingrenlist">
+                <view class="personalitymingrenli" wx:for="{{msgps.psychoMoodAnalyzeData.literaturePatentList}}" wx:for-item="val" wx:key="index">
+                    <image alt class="personalitymingrenliimg _img" src="{{val.url}}"></image>
+                    <view class="personalitymingrenliname">{{val.name}}</view>
+                </view>
+            </view>
+        </view>
+        <image alt bindtap="__e" class="personalityquxq _img" data-event-opts="{{[ [ 'tap',[ ['xiangqing'] ] ] ]}}" src="https://diag.wuzhengai.com/appimage/personality1.png"></image>
+    </view>
+</view>

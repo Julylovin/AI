@@ -27,11 +27,11 @@ const utils = {
         labelMap: ['', '较低', '偏高', '较高', '过高'],
         images: [
             '',
-            "https://diag.wuzhengai.com/rppgimages/emotion61.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion62.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion63.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion64.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion65.png"
+			"https://disks.epihealth.cn/mental/static/0304131042f_67c68b52bfcdd214284365.png",
+			"https://disks.epihealth.cn/mental/static/0304131043f_67c68b538ba42963624409.png",
+			"https://disks.epihealth.cn/mental/static/0304131044f_67c68b542283f357228602.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b5528761809355045.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b559016d893586654.png"
         ],
         // 颜色
         color(score) {
@@ -53,11 +53,11 @@ const utils = {
         labelMap: ['', '充足', '较高', '较低', '过低'],
         images: [
             '',
-            "https://diag.wuzhengai.com/rppgimages/emotion61.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion62.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion63.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion64.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion65.png"
+			"https://disks.epihealth.cn/mental/static/0304131042f_67c68b52bfcdd214284365.png",
+			"https://disks.epihealth.cn/mental/static/0304131043f_67c68b538ba42963624409.png",
+			"https://disks.epihealth.cn/mental/static/0304131044f_67c68b542283f357228602.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b5528761809355045.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b559016d893586654.png"
         ],
         // 颜色
         color(score) {
@@ -79,11 +79,11 @@ const utils = {
         labelMap: ['', '优秀', '良好', '一般', '较差'],
         images: [
             '',
-            "https://diag.wuzhengai.com/rppgimages/emotion61.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion62.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion63.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion64.png",
-            "https://diag.wuzhengai.com/rppgimages/emotion65.png"
+			"https://disks.epihealth.cn/mental/static/0304131042f_67c68b52bfcdd214284365.png",
+			"https://disks.epihealth.cn/mental/static/0304131043f_67c68b538ba42963624409.png",
+			"https://disks.epihealth.cn/mental/static/0304131044f_67c68b542283f357228602.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b5528761809355045.png",
+			"https://disks.epihealth.cn/mental/static/0304131045f_67c68b559016d893586654.png"
         ],
         // 颜色
         color(score) {

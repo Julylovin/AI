@@ -1,0 +1,118 @@
+<view>
+  <!-- 姓名和免责声明 -->
+  <view>姓名：{{ msg.userInfo.userName }}</view>
+  <view>本报告所展示的分析结果仅代表即时数据，并非专业非接触检测数据报告，仅供参考。</view>
+
+  <!-- 心理综合评分 -->
+  <view class="psych-score">
+    <view>心理综合评分：{{ msgps.psychoMoodAnalyzeData.psychoGrade }}</view>
+    <view style="color:{{ utils.psychoScore.color(msgps.psychoMoodAnalyzeData.psychoScore) }}">
+      {{ utils.psychoScore.label(msgps.psychoMoodAnalyzeData.psychoScore) }}
+    </view>
+    <view>注：综合评定结果由负面情绪、正面情绪、心理能力综合计算。</view>
+  </view>
+
+  <!-- 分项指标 -->
+  <view class="section">
+    <!-- 负面情绪 -->
+    <view class="negative-mood">
+      <view>负面情绪</view>
+      <view>评分：{{ msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade }}分</view>
+      <view style="color:{{ utils.negativeMood.color(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore) }}">
+        {{ utils.negativeMood.label(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore) }}
+      </view>
+    </view>
+
+    <!-- 正面情绪 -->
+    <view class="positive-mood">
+      <view>正面情绪</view>
+      <view>评分：{{ msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade }}分</view>
+      <view style="color:{{ utils.positiveMood.color(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore) }}">
+        {{ utils.positiveMood.label(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore) }}
+      </view>
+    </view>
+
+    <!-- 心理能力 -->
+    <view class="mood-ability">
+      <view>心理能力</view>
+      <view>评分：{{ msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade }}分</view>
+      <view style="color:{{ utils.moodAbility.color(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore) }}">
+        {{ utils.moodAbility.label(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore) }}
+      </view>
+    </view>
+  </view>
+
+  <!-- 心率变异性趋势图 -->
+  <view class="hrv-chart">
+    <view>心率变异性趋势图</view>
+    <view>心率变异性解读</view>
+  </view>
+
+  <!-- 心理评价 -->
+  <view class="psych-evaluation">
+    <view>心理评价</view>
+    <view wx:for="{{ msgps.analyzeResultCarryColor || msgps.analyzeResult }}" wx:key="index">
+      {{ item.text }}
+    </view>
+  </view>
+
+  <!-- 自主神经活动 -->
+  <view class="autonomic-nervous">
+    <view>自主神经活动状态</view>
+    <view>自主神经活动说明</view>
+    <view>{{ val }}</view>
+  </view>
+
+  <!-- 情绪评价-负面情绪 -->
+  <view class="negative-emotion-eval">
+    <view>您的负面情绪评分为：</view>
+    <view style="color:{{ utils.negativeMood.color(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore) }}">
+      {{ msgps.psychoMoodAnalyzeData.negativeMoodData.moodGrade }}分
+    </view>
+    <image src="{{ utils.negativeMood.image(msgps.psychoMoodAnalyzeData.negativeMoodData.moodScore) }}" />
+    <view>取值范围0-100分，得分越低越好</view>
+  </view>
+
+  <!-- 分项指标列表 -->
+  <view wx:for="{{ msgps.psychoMoodAnalyzeData.negativeMoodData.moodAbilityList }}" wx:key="index">
+    <view>{{ item.name }}指数</view>
+    <view style="color:{{ utils.val_score_Color(item.score) }}">
+      {{ item.index }}
+    </view>
+    <view style="color:{{ utils.val_score_Color(item.score) }}">
+      {{ utils.indexLabel(item.name, item.score) }}
+    </view>
+    <view>解读：{{ item.info || item.unscramble }}</view>
+  </view>
+
+  <!-- 风险因子分析 -->
+  <view wx:for="{{ item.riskFactorAnalysisDataList }}" wx:key="index1">
+    <view>{{ val1.funcationName }}</view>
+    <view>{{ val1.result + (val1.unit || '') }}</view>
+    <view style="color:{{ utils.riskFactorColor(val1.dataType) }}">
+      {{ val1.dataType == 1 ? '偏低' : val1.dataType == 2 ? '正常' : val1.dataType == 3 ? '偏高' : '临界值' }}
+    </view>
+  </view>
+
+  <!-- 情绪评价-疾病风险 -->
+  <view>情绪评价-疾病风险</view>
+
+  <!-- 情绪评价-正面情绪 -->
+  <view class="positive-emotion-eval">
+    <view>您的正面情绪评分为：</view>
+    <view style="color:{{ utils.positiveMood.color(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore) }}">
+      {{ msgps.psychoMoodAnalyzeData.positiveMoodData.moodGrade }}分
+    </view>
+    <image src="{{ utils.positiveMood.image(msgps.psychoMoodAnalyzeData.positiveMoodData.moodScore) }}" />
+    <view>取值范围0-100分，得分越高越好</view>
+  </view>
+
+  <!-- 心理能力评价 -->
+  <view class="mood-ability-eval">
+    <view>心理能力评价</view>
+    <view style="color:{{ utils.moodAbility.color(msgps.psychoMoodAnalyzeData.moodAbilityData.moodScore) }}">
+      {{ msgps.psychoMoodAnalyzeData.moodAbilityData.moodGrade }}分
+    </view>
+    <view>心理能力解读：{{ val.name + '：' + val.info }}</view>
+  </view>
+</view>
